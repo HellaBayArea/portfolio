@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyle Ramirez · AI Art & Music</title>
+<meta name="description" content="Portfolio of Kyle Ramirez, a Bay Area AI artist and songwriter: horror-movie tribute art, Munchkin comics, bilingual Japanese/English songs, and AI music videos.">
+<meta property="og:title" content="Kyle Ramirez · AI Art & Music">
+<meta property="og:description" content="AI art, bilingual songs, and music videos from the Bay Area.">
+<meta property="og:image" content="assets/img/alien.webp">
+<meta name="theme-color" content="#07080c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080c;--bg2:#0d0f16;--card:#12151e;--line:#222736;--text:#eef0f6;--muted:#9aa1b4;--red:#e5383b;--amber:#ffb347;--cyan:#4cc9f0;--radius:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans JP",system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}img{max-width:100%;display:block}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+.jp{font-family:"Noto Sans JP",Inter,sans-serif}
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;background:linear-gradient(#07080cee,#07080c99);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:26px;letter-spacing:2px;text-decoration:none}
+.logo span{color:var(--red)}
+.links{display:flex;gap:22px;flex-wrap:wrap}
+.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:.2s}
+.links a:hover{color:var(--text)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
+/* hero */
+.hero{position:relative;min-height:min(100vh,920px);display:flex;align-items:center;overflow:hidden;padding:110px 0 70px}
+.hero-bg{position:absolute;inset:0;background:url(assets/poster/beyond-the-stars.webp) center/cover;opacity:.38;transform:scale(1.05);filter:saturate(1.1)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,transparent 0,#07080c 75%),linear-gradient(transparent 60%,var(--bg))}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid #ffb34755;padding:6px 12px;border-radius:99px}
+h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(64px,10vw,140px);line-height:.88;margin:18px 0 6px;letter-spacing:2px}
+h1 .accent{color:var(--red);text-shadow:0 0 40px #e5383b66}
+.jpname{color:var(--muted);font-size:18px;letter-spacing:6px;margin-bottom:18px}
+.tagline{font-size:clamp(17px,2vw,21px);color:#d6d9e3;max-width:560px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:#ffffff08;transition:.2s}
+.btn:hover{background:#ffffff14;transform:translateY(-1px)}
+.btn.primary{background:var(--red);border-color:var(--red)}
+.btn.primary:hover{background:#ff4b4e}
+.stats{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
+.stat b{display:block;font-family:"Bebas Neue",sans-serif;font-size:40px;font-weight:400;line-height:1}
+.stat span{color:var(--muted);font-size:13px}
+/* hero collage */
+.collage{position:relative;height:600px;overflow:hidden;border-radius:26px;
+ -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.collage-in{position:absolute;inset:-60px -40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;transform:rotate(-6deg)}
+.col{display:flex;flex-direction:column;gap:14px;animation:up 60s linear infinite;will-change:transform}
+.col.c2{animation-name:down;animation-duration:72s}.col.c3{animation-duration:66s}
+.collage:hover .col{animation-play-state:paused}
+.col a{display:block;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 18px 40px #000b,0 0 0 1px #ffffff1a;transition:transform .35s,box-shadow .35s;background:var(--card)}
+.col a:hover{transform:scale(1.04);box-shadow:0 24px 50px #000d,0 0 0 2px var(--red);z-index:2}
+.col img{width:100%;height:auto;filter:saturate(1.05) contrast(1.03)}
+.col a::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#07080c66)}
+@keyframes up{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 7px))}}
+@keyframes down{from{transform:translateY(calc(-50% - 7px))}to{transform:translateY(0)}}
+.collage-glow{position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,#e5383b33,transparent 70%);pointer-events:none;z-index:-1}
+.collage-wrap{position:relative}
+.collage-tag{position:absolute;left:18px;bottom:18px;z-index:3;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:#07080ccc;border:1px solid #ffffff22;padding:7px 12px;border-radius:99px;backdrop-filter:blur(6px);text-decoration:none;color:#fff}
+.collage-tag:hover{border-color:var(--red)}
+@media (prefers-reduced-motion:reduce){.col{animation:none}}
+/* sections */
+section{padding:90px 0;position:relative}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(44px,6vw,72px);line-height:.95;margin:0;letter-spacing:1.5px}
+h2 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;letter-spacing:4px;color:var(--red);margin-bottom:8px}
+.lead{color:var(--muted);max-width:520px;margin:0}
+.alt{background:var(--bg2);border-top:1px solid #ffffff08;border-bottom:1px solid #ffffff08}
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:99px;font:500 14px Inter,sans-serif;cursor:pointer;transition:.2s}
+.filters button.on,.filters button:hover{color:#fff;border-color:var(--red);background:#e5383b22}
+/* gallery masonry */
+.masonry{columns:4 260px;column-gap:16px}
+.tile{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--card);border:1px solid #ffffff0d}
+.tile img{width:100%;height:auto;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}
+.tile figcaption{position:absolute;inset:auto 0 0 0;padding:30px 14px 12px;background:linear-gradient(transparent,#000d);font-size:14px;font-weight:600;opacity:0;transform:translateY(8px);transition:.3s}
+.tile figcaption span{display:block;font-weight:400;color:#c7cad6;font-size:12px}
+.tile:hover figcaption,.tile:focus figcaption{opacity:1;transform:none}
+@media (hover:none){.tile figcaption{opacity:1;transform:none}}
+/* featured song */
+.feature{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,#1a1320,#10131c);border:1px solid #ffb34733;border-radius:24px;padding:28px;margin-bottom:46px;box-shadow:0 0 80px #ffb34712}
+.feature img{border-radius:16px;width:100%;aspect-ratio:1;object-fit:cover}
+.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1a1000;background:var(--amber);padding:5px 10px;border-radius:6px}
+.feature h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,56px);line-height:1;margin:14px 0 4px}
+.feature .jp{font-size:22px;color:var(--amber)}
+.feature p{color:#cfd3de}
+.charity{border-left:3px solid var(--amber);background:#ffb3470d;padding:14px 16px;border-radius:0 12px 12px 0;margin:18px 0;font-size:15px}
+.charity a{color:var(--amber)}
+/* song grid */
+.songs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:.25s}
+.song:hover{transform:translateY(-4px);border-color:#e5383b88;box-shadow:0 20px 40px #0008}
+.song .art{position:relative;aspect-ratio:1;overflow:hidden}
+.song .art img{width:100%;height:100%;object-fit:cover}
+.song .play{position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 6px 20px #e5383b88;opacity:0;transform:scale(.8);transition:.25s}
+.song:hover .play{opacity:1;transform:none}
+.song .meta{padding:14px 16px 16px}
+.song h4{margin:0 0 4px;font-size:16px}
+.song p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tags i{font-style:normal;font-size:11px;color:#c9cde0;border:1px solid var(--line);padding:2px 8px;border-radius:99px}
+.tags i.jpt{border-color:#e5383b66;color:#ffb3b4}
+.more{text-align:center;margin-top:34px}
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vcard video{width:100%;aspect-ratio:16/9;display:block;background:#000;object-fit:cover}
+.vcard .meta{padding:14px 16px}
+.vcard h4{margin:0;font-size:16px}.vcard p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.vcard .meta a{color:var(--cyan);font-size:13px;text-decoration:none}
+h3.sub{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;letter-spacing:1px;margin:60px 0 6px}
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.boards .tile{margin:0}
+.boards .tile img{aspect-ratio:16/9;object-fit:cover}
+.boards .wide{grid-column:span 2}
+.boards .wide img{aspect-ratio:3/2}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px;align-items:center}
+.about img{border-radius:20px;border:1px solid #ffffff14;box-shadow:0 30px 60px #000a}
+.about p{color:#d1d4de;font-size:17px}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.skill b{display:block;font-size:14px}.skill span{color:var(--muted);font-size:13px}
+/* contact */
+.contact{text-align:center}
+.socials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
+.social{display:flex;flex-direction:column;align-items:center;gap:10px;padding:30px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-decoration:none;transition:.25s}
+.social:hover{transform:translateY(-4px);border-color:var(--red)}
+.social svg{width:36px;height:36px}
+.social b{font-size:18px}.social span{color:var(--muted);font-size:14px}
+footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-size:13px;text-align:center}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+.lb.open{display:flex}
+.lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
+.lb img{max-width:92vw;max-height:82vh;border-radius:10px;box-shadow:0 20px 60px #000}
+.lb figcaption{margin-top:12px;text-align:center;font-weight:600}
+.lb figcaption span{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.lb button{position:absolute;background:#ffffff14;border:1px solid #ffffff22;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
+.lb .x{top:18px;right:18px}.lb .prev{left:18px;top:50%}.lb .next{right:18px;top:50%}
+.lb button:hover{background:var(--red)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+ .hero .wrap{grid-template-columns:1fr}.collage{height:440px}.collage-in{inset:-40px -30px;gap:10px}.col{gap:10px}
+ .feature{grid-template-columns:1fr;padding:18px}
+ .about{grid-template-columns:minmax(0,1fr)}.about img{max-width:min(420px,100%);margin:0 auto}
+ .boards .wide{grid-column:auto}
+}
+@media (max-width:720px){
+ .links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:#07080cf5;border-bottom:1px solid var(--line)}
+ .links.open{display:flex}.links a{padding:14px 6vw;font-size:16px}
+ .burger{display:block}
+ section{padding:64px 0}
+ .masonry{columns:2 150px;column-gap:10px}.tile{margin-bottom:10px}
+ .videos{grid-template-columns:1fr}
+ .songs{grid-template-columns:repeat(2,1fr);gap:12px}
+ .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
+ .socials{grid-template-columns:1fr}
+ .skills{grid-template-columns:1fr}
+ .stats{gap:22px}.stat b{font-size:32px}
+ .collage{height:400px;border-radius:20px}.col a{border-radius:10px}
+ .hero{padding:96px 0 40px;min-height:0}.hero .wrap{gap:28px}
+ .stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:10px;margin-top:26px}.stat b{font-size:28px}.stat span{font-size:11px;display:block;line-height:1.3}
+ .lb .prev,.lb .next{top:auto;bottom:18px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+ <a class="logo" href="#top">KYLE<span>.</span>RAMIREZ</a>
+ <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+ <div class="links" onclick="this.classList.remove('open')">
+  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Videos</a><a href="#about">About</a><a href="#contact">Contact</a>
+ </div>
+</div></nav>
+
+<header class="hero" id="top">
+ <div class="hero-bg"></div>
+ <div class="wrap">
+  <div>
+   <span class="eyebrow">AI Artist · Songwriter · Bay Area</span>
+   <h1>Kyle<br><span class="accent">Ramirez</span></h1>
+   <div class="jpname jp">カイル・ラミレス</div>
+   <p class="tagline">Cinematic AI art, horror-movie tributes, and bilingual Japanese / English songs, built with AI tools from prompt to poster to music video.</p>
+   <div class="cta">
+    <a class="btn primary" href="#art">View the art</a>
+    <a class="btn" href="#music">▶ Listen</a>
+   </div>
+   <div class="stats">
+    <div class="stat"><b>99</b><span>songs on Suno</span></div>
+    <div class="stat"><b>20K+</b><span>plays</span></div>
+    <div class="stat"><b>10+</b><span>AI music videos</span></div>
+    <div class="stat"><b class="jp" style="font-family:'Noto Sans JP'">日本語</b><span>&amp; English lyrics</span></div>
+   </div>
+  </div>
+  <div class="collage-wrap">
+   <div class="collage" id="collage" aria-label="A mix of Kyle's AI artwork"><div class="collage-in" id="collage-in"></div></div>
+   <div class="collage-glow"></div>
+   <a class="collage-tag" href="#art">◆ Browse the full gallery</a>
+  </div>
+ </div>
+</header>
+
+<section id="art">
+ <div class="wrap">
+  <div class="sec-head reveal">
+   <h2><small class="jp">AIアート</small>AI Art Gallery</h2>
+   <p class="lead">Horror classics reimagined with Munchkin the tuxedo cat, manga-style comics, character design, and cover art. Tap any piece to view it full size.</p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="masonry" id="gallery"></div>
+ </div>
+</section>
+
+<section id="music" class="alt">
+ <div class="wrap">
+  <div class="sec-head reveal">
+   <h2><small class="jp">音楽</small>Music</h2>
+   <p class="lead">From techno-hardstyle concept albums to metalcore, music-box horror waltzes, and Japanese ballads. Every track was written and produced with Suno.</p>
+  </div>
+
+  <article class="feature reveal">
+   <img src="assets/covers/different-light.webp" alt="A Different Kind of Light cover art" loading="lazy">
+   <div>
+    <span class="badge">Featured · Charity single</span>
+    <h3>A Different Kind of Light</h3>
+    <div class="jp">違う光</div>
+    <p>A melodic metalcore anthem sung in Japanese, written for children with disabilities. It is about the kids who are handed one narrow path and find their own rhythm, their own entrance, and their own light.</p>
+    <div class="charity">💛 <b>Charity pledge:</b> Kyle is donating $1 for every like from a verified account on <a href="https://x.com/HellaBayArea/status/2114258221347287448" target="_blank" rel="noopener">his X post</a>, up to $100, to <a href="https://unleashpotential.jp" target="_blank" rel="noopener">Unleash Potential</a> in Japan by the end of 2026.</div>
+    <div class="cta">
+     <a class="btn primary" href="https://suno.com/song/025d9200-f3dc-4bb0-976a-91af5b84df49" target="_blank" rel="noopener">▶ Listen on Suno</a>
+     <a class="btn" href="#videos">Watch the video teaser</a>
+    </div>
+   </div>
+  </article>
+
+  <div class="songs" id="songs"></div>
+  <div class="more"><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 99 songs on Suno →</a></div>
+ </div>
+</section>
+
+<section id="videos">
+ <div class="wrap">
+  <div class="sec-head reveal">
+   <h2><small class="jp">映像</small>Videos &amp; Storyboards</h2>
+   <p class="lead">Full AI music videos: storyboarded, generated scene by scene, timed to the vocals, and subtitled. These are short teasers; press play for sound.</p>
+  </div>
+  <div class="videos" id="videos-grid"></div>
+  <h3 class="sub">Storyboards</h3>
+  <p class="lead" style="margin-bottom:20px">Every video starts as a board. Here is the planning behind the Tamiya delivery-truck commercial parody and two music videos.</p>
+  <div class="boards" id="boards"></div>
+ </div>
+</section>
+
+<section id="about" class="alt">
+ <div class="wrap about">
+  <img src="assets/img/creative-mode.webp" alt="Kyle's chibi character in full creative mode" loading="lazy" class="reveal">
+  <div class="reveal">
+   <h2><small class="jp">プロフィール</small>About Kyle</h2>
+   <p>I'm Kyle, a 38-year-old creator from the Bay Area who fell hard for what AI can do. I'm not a trained musician or illustrator. I'm a storyteller who learned to direct AI tools until the picture or the song in my head showed up on the screen.</p>
+   <p>I grew up on scary movies like <i>Alien</i>, <i>Resident Evil</i>, <i>Friday the 13th</i>, and <i>The Ring</i>, so a lot of my art turns them into something fun, usually with my tuxedo cat Munchkin in costume. I write songs in English and Japanese, build full music videos from storyboards, and I use my work to give back, like my charity single for children with disabilities.</p>
+   <p>This site is the permanent home for all of it, because great work shouldn't get lost in a feed.</p>
+   <div class="skills">
+    <div class="skill"><b>Image generation &amp; editing</b><span>Consistent characters, posters, comics</span></div>
+    <div class="skill"><b>AI music</b><span>Suno songwriting, bilingual lyrics, 99 tracks</span></div>
+    <div class="skill"><b>AI video</b><span>Storyboards, scene generation, lyric sync</span></div>
+    <div class="skill"><b>Prompt craft</b><span>Directing multi-step creative pipelines</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" class="contact">
+ <div class="wrap">
+  <h2 class="reveal"><small class="jp">つながろう</small>Let's Connect</h2>
+  <p class="lead reveal" style="margin:14px auto 0">New art drops on X and TikTok, and new songs land on Suno. For collaborations or AI creative roles, reach out on X.</p>
+  <div class="socials">
+   <a class="social reveal" href="https://x.com/HellaBayArea" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <b>X</b><span>@HellaBayArea</span></a>
+   <a class="social reveal" href="https://www.tiktok.com/@hellabayarea88" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9a4.8 4.8 0 0 1-1-.2z"/></svg>
+    <b>TikTok</b><span>@hellabayarea88</span></a>
+   <a class="social reveal" href="https://suno.com/@detnorske" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <b>Suno</b><span>@detnorske</span></a>
+  </div>
+ </div>
+</section>
+
+<footer>© 2026 Kyle Ramirez. All artwork, lyrics, and videos created by Kyle Ramirez with AI tools. Movie titles are referenced as fan tributes.</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+ <button class="x" aria-label="Close">✕</button><button class="prev" aria-label="Previous">‹</button><button class="next" aria-label="Next">›</button>
+ <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+</div>
+
+<script>
+const ART=[
+ ["alien","In Space No One Can Hear You Meow","horror","Alien (1979) tribute poster"],
+ ["the-ring","The Ring: Seven Days, Nine Lives","horror","J-horror tribute"],
+ ["starship","Starship Munchkin","munchkin","Launch-day trend art"],
+ ["resident-evil","Resident Evil: Nine Lives of the Dead","horror","Survival-horror fan poster"],
+ ["dracula","Dracula: Fangs for the Night-Meows","horror","Gothic classic"],
+ ["creative-mode","Full Creative Mode","characters","Signature chibi character"],
+ ["friday13","Friday the 13th: Nine Lives","horror","Camp Crystal Lake, cat edition"],
+ ["jaws","Jaws: We're Gonna Need a Bigger Track","horror","Jaws x Mini 4WD crossover"],
+ ["pit-crew","Munchkin Pit Crew: Tune-Up","comics","4-panel comic"],
+ ["bay-area-boy","Bay Area Boy","covers","Single cover art"],
+ ["pet-sematary","Pet Sematary: Sometimes Dead Is Purr-ter","horror","Stephen King tribute"],
+ ["caturday","Caturday","munchkin","Munchkin and friends"],
+ ["childs-play","Child's Play: Meow's Your Friend","horror","Killer-doll classic"],
+ ["different-light-art","A Different Kind of Light","covers","Charity single key art"],
+ ["japan-cup","Good Morning! Japan Cup Breakfast","comics","Manga-style daily comic"],
+ ["nightmare","The Nightmare Before Meow-loween","horror","Halloween Town tribute"],
+ ["halloween-mini4wd","Halloween x Mini 4WD","horror","Slasher-night race"],
+ ["mind-blown","Mind = Blown","characters","Working with AI collaborators"],
+ ["cuddle","Best Friends","munchkin","Kyle and Munchkin"],
+ ["bay-area-boy-club","Bay Area Boy (club cover)","covers","Alternate cover"],
+ ["pit-crew-2","Munchkin Pit Crew: Day 2","comics","Mini 4WD comic strip"],
+ ["neon-studio","Neon Studio","characters","Chibi studio series"],
+ ["autumn","Autumn Portrait","munchkin","Anime-style portrait"],
+ ["footprints-cover","足跡が途切れる場所でも","covers","Memorial song cover"],
+ ["england","Breakfast Around the World: England","comics","Manga-style daily comic"],
+ ["artist-day","Happy International Artist Day","comics","Daily calendar post"]
+];
+const CATS=[["all","All"],["horror","Horror Tributes"],["munchkin","Munchkin"],["comics","Comics"],["covers","Cover Art"],["characters","Characters"]];
+const SONGS=[
+ ["footprints","足跡が途切れる場所でも","Even Where the Footprints End","A Japanese post-hardcore ballad in memory of Kyle's late dog Buttons.","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e",["Metalcore","日本語"]],
+ ["darkness-inside","Darkness Inside (Intro)","Shadows of Stone, track 1","Opens a 15-track cinematic techno-hardstyle concept album.","17fe4f71-5ced-4385-971d-3211e7e2ac02",["Hardstyle","Concept album"]],
+ ["silent-scream","Silent Scream","Shadows of Stone","Jagged industrial hardstyle with dual heavy drops.","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a",["Hardstyle","Music video"],"poster"],
+ ["boogie-man","Boogie Man","Horror","A children's horror waltz: detuned music box and pounding piano.","60feab2c-52fb-42de-82fb-d6f4c7cb5c86",["Horror","Orchestral"]],
+ ["beyond-the-stars","Beyond the Stars","星の向こうへ","Atmospheric electronic metalcore about an astronaut calling home.","2c699a9a-bf3e-402a-9207-6ca25650f03d",["Metalcore","日本語","Music video"]],
+ ["eternal-voice","Eternal Voice","Shadows of Stone","Dark hardstyle with ethereal, otherworldly vocals.","86d863dd-3956-4223-8911-f3a0c83987e2",["Hardstyle","Lyric video"],"poster"],
+ ["forgotten-ones","The Forgotten Ones","忘れられた人々","A Japanese metalcore ballad for the elderly people the world walks past.","95e26a2e-838e-4a6c-9d33-e89000c6788a",["Metalcore","日本語","Music video"]],
+ ["letter-front","前線からの手紙","Letter from the Front","A soldier's letter home to his little brother, in Japanese deathcore.","661ee057-bc6a-4aad-9ab1-f4f0594985c3",["Deathcore","日本語","Music video"]],
+ ["good-night-children","Good Night, Children of the World","Nursery x metal","A sweet lullaby that turns into extreme metal screams.","25355328-7250-4a0e-8b81-815b5e132a30",["Experimental","Metal"]],
+ ["mayhem","Mayhem on the Peninsula","Battlefield metalcore","Relentless double-kick metalcore with radio chatter and explosions.","13887b34-bf14-4fd6-af62-7240b66ee22f",["Metalcore","Music video"]],
+ ["zero-viewers","ZERO VIEWERS","視聴者ゼロ","Bilingual hardstyle about streaming into the void.","2305492e-e317-41d5-922d-dc66a6d4f63f",["Hardstyle","日本語 / EN"]],
+ ["mini4wd-friends","Mini 4WD Friends","ミニ四駆","Bilingual racing-game electropop for Mini 4WD fans.","6ff49468-9a69-4c68-8d70-5bc31121e2e2",["Electropop","日本語 / EN"]]
+];
+const VIDS=[
+ ["different-light","A Different Kind of Light 違う光","Charity single music video","025d9200-f3dc-4bb0-976a-91af5b84df49"],
+ ["beyond-the-stars","Beyond the Stars","Anime sci-fi music video","2c699a9a-bf3e-402a-9207-6ca25650f03d"],
+ ["tamiya-ad","Tamiya Delivery 「押しても負けない」","Japanese TV-commercial comedy parody (full 30 s)",null],
+ ["bay-area-boy","Bay Area Boy","Club anthem music video",null],
+ ["forgotten-ones","The Forgotten Ones 忘れられた人々","Anime drama music video","95e26a2e-838e-4a6c-9d33-e89000c6788a"],
+ ["letter-front","前線からの手紙","War-story music video","661ee057-bc6a-4aad-9ab1-f4f0594985c3"],
+ ["footprints","足跡が途切れる場所でも","Memorial music video for Buttons","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e"],
+ ["silent-scream","Silent Scream","Lyric music video","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a"],
+ ["mayhem","Mayhem on the Peninsula","Cinematic war music video","13887b34-bf14-4fd6-af62-7240b66ee22f"]
+];
+const BOARDS=[
+ ["tamiya-board","Tamiya Delivery: full commercial storyboard","Storyboard",1],
+ ["ta1","Rain or wind… (frame 1)","Tamiya ad storyboard"],["ta2","The push (frame 2)","Tamiya ad storyboard"],["ta3","The argument (frame 3)","Tamiya ad storyboard"],
+ ["ta4","Tamiya power (frame 4)","Tamiya ad storyboard"],["ta5","The rescue (frame 5)","Tamiya ad storyboard"],["ta6","End card (frame 6)","Tamiya ad storyboard"],
+ ["light-board","A Different Kind of Light: music video storyboard","Storyboard",1],
+ ["bab-board","Bay Area Boy: music video storyboard","Storyboard",1]
+];
+const $=s=>document.querySelector(s);
+// gallery
+let current=[];
+function renderGallery(cat){
+ const g=$('#gallery');g.innerHTML='';
+ current=ART.filter(a=>cat==='all'||a[2]===cat).map(a=>({slug:a[0],title:a[1],cap:a[3]}));
+ current.forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
+  f.innerHTML=`<img src="assets/thumb/${a.slug}.webp" alt="${a.title.replace(/"/g,'&quot;')}" loading="lazy"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
+  f.onclick=()=>openLb(current,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(current,i)};g.appendChild(f);});
+}
+const fl=$('#filters');CATS.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';
+ b.onclick=()=>{fl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderGallery(k)};fl.appendChild(b)});
+renderGallery('all');
+// songs
+const play='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
+$('#songs').innerHTML=SONGS.map(s=>`<a class="song reveal" href="https://suno.com/song/${s[4]}" target="_blank" rel="noopener">
+ <div class="art"><img src="assets/${s[6]==='poster'?'poster':'covers'}/${s[0]}.webp" alt="${s[1]} cover" loading="lazy"><span class="play">${play}</span></div>
+ <div class="meta"><h4>${s[1]}</h4><p class="jp" style="color:#c9a3a4;margin-bottom:4px">${s[2]}</p><p>${s[3]}</p>
+ <div class="tags">${s[5].map(t=>`<i class="${/日本語/.test(t)?'jpt':''}">${t}</i>`).join('')}</div></div></a>`).join('');
+// videos
+$('#videos-grid').innerHTML=VIDS.map(v=>`<div class="vcard reveal"><video controls preload="none" playsinline poster="assets/poster/${v[0]}.webp" src="assets/video/${v[0]}.mp4"></video>
+ <div class="meta"><h4>${v[1]}</h4><p>${v[2]}${v[3]?` · <a href="https://suno.com/song/${v[3]}" target="_blank" rel="noopener">song on Suno ↗</a>`:''}</p></div></div>`).join('');
+// boards
+const bItems=BOARDS.map(b=>({slug:b[0],title:b[1],cap:b[2]}));
+$('#boards').innerHTML='';BOARDS.forEach((b,i)=>{const f=document.createElement('figure');f.className='tile'+(b[3]?' wide':'');f.tabIndex=0;
+ f.innerHTML=`<img src="assets/thumb/${b[0]}.webp" alt="${b[1]}" loading="lazy"><figcaption>${b[1]}<span>${b[2]}</span></figcaption>`;
+ f.onclick=()=>openLb(bItems,i);$('#boards').appendChild(f)});
+// lightbox
+let lbSet=[],lbI=0;const lb=$('#lb');
+function show(){const a=lbSet[lbI];$('#lb-img').src=`assets/img/${a.slug}.webp`;$('#lb-img').alt=a.title;$('#lb-cap').innerHTML=`${a.title}<span>${a.cap} · ${lbI+1} / ${lbSet.length}</span>`}
+function openLb(set,i){lbSet=set;lbI=i;show();lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+function step(d){lbI=(lbI+d+lbSet.length)%lbSet.length;show()}
+lb.querySelector('.x').onclick=closeLb;lb.querySelector('.prev').onclick=e=>{e.stopPropagation();step(-1)};lb.querySelector('.next').onclick=e=>{e.stopPropagation();step(1)};
+lb.onclick=e=>{if(e.target===lb)closeLb()};
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1)});
+// only one video plays at a time
+document.addEventListener('play',e=>{document.querySelectorAll('video').forEach(v=>{if(v!==e.target)v.pause()})},true);
+// hero collage: a mixed, slowly scrolling wall of art
+const COLS=[
+ ["alien","different-light-art","pit-crew","dracula","caturday","bay-area-boy","the-ring","creative-mode"],
+ ["japan-cup","starship","pet-sematary","footprints-cover","resident-evil","cuddle","mind-blown","halloween-mini4wd"],
+ ["childs-play","autumn","england","friday13","neon-studio","jaws","bay-area-boy-club","pit-crew-2"]];
+const artBySlug=Object.fromEntries(ART.map(a=>[a[0],a]));
+$('#collage-in').innerHTML=COLS.map((c,ci)=>{const items=c.map(slug=>{const a=artBySlug[slug];const t=a?a[1].replace(/"/g,'&quot;'):'';
+ return `<a href="#art" data-slug="${slug}" title="${t}"><img src="assets/collage/${slug}.webp" alt="${t}" decoding="async"></a>`}).join('');
+ return `<div class="col c${ci+1}">${items}${items.replace(/alt="[^"]*"/g,'alt="" aria-hidden="true"')}</div>`}).join('');
+$('#collage-in').addEventListener('click',e=>{const l=e.target.closest('a');if(!l)return;e.preventDefault();
+ const set=ART.map(a=>({slug:a[0],title:a[1],cap:a[3]}));const i=set.findIndex(a=>a.slug===l.dataset.slug);if(i>=0)openLb(set,i)});
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
