@@ -106,7 +106,12 @@ h2 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;lett
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .tags i{font-style:normal;font-size:11px;color:#c9cde0;border:1px solid var(--line);padding:2px 8px;border-radius:99px}
 .tags i.jpt{border-color:#e5383b66;color:#ffb3b4}
-.more{text-align:center;margin-top:34px}
+.more{text-align:center;margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.song.hide{display:none}
+.song .art img{background:#1a1d27}
+.tags i.x{border-color:#ffb34766;color:#ffd59a}
+.count{color:var(--muted);font-size:14px;margin:-12px 0 18px}
+.workflow{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 /* videos */
 .videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -194,9 +199,9 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
     <a class="btn" href="#music">▶ Listen</a>
    </div>
    <div class="stats">
-    <div class="stat"><b>99</b><span>songs on Suno</span></div>
+    <div class="stat"><b>100</b><span>songs on Suno</span></div>
     <div class="stat"><b>20K+</b><span>plays</span></div>
-    <div class="stat"><b>10+</b><span>AI music videos</span></div>
+    <div class="stat"><b>12+</b><span>AI music videos</span></div>
     <div class="stat"><b class="jp" style="font-family:'Noto Sans JP'">日本語</b><span>&amp; English lyrics</span></div>
    </div>
   </div>
@@ -212,7 +217,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  <div class="wrap">
   <div class="sec-head reveal">
    <h2><small class="jp">AIアート</small>AI Art Gallery</h2>
-   <p class="lead">Horror classics reimagined with Munchkin the tuxedo cat, manga-style comics, character design, and cover art. Tap any piece to view it full size.</p>
+   <p class="lead">Horror classics reimagined with Munchkin the tuxedo cat, the Breakfast Around the World manga comics, daily calendar posts, character design, and cover art. Tap any piece to view it full size.</p>
   </div>
   <div class="filters" id="filters"></div>
   <div class="masonry" id="gallery"></div>
@@ -241,8 +246,10 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    </div>
   </article>
 
+  <div class="filters" id="song-filters"></div>
+  <p class="count" id="song-count"></p>
   <div class="songs" id="songs"></div>
-  <div class="more"><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 99 songs on Suno →</a></div>
+  <div class="more"><button class="btn" id="song-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 100 songs on Suno →</a></div>
  </div>
 </section>
 
@@ -253,8 +260,11 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    <p class="lead">Full AI music videos: storyboarded, generated scene by scene, timed to the vocals, and subtitled. These are short teasers; press play for sound.</p>
   </div>
   <div class="videos" id="videos-grid"></div>
+  <h3 class="sub">AI Workflow &amp; Motion Design</h3>
+  <p class="lead" style="margin-bottom:20px">How the work gets made: a team of AI bots with Creative Bot as the hub, plus the motion graphics Kyle uses on his live streams.</p>
+  <div class="workflow" id="work-grid"></div>
   <h3 class="sub">Storyboards</h3>
-  <p class="lead" style="margin-bottom:20px">Every video starts as a board. Here is the planning behind the Tamiya delivery-truck commercial parody and two music videos.</p>
+  <p class="lead" style="margin-bottom:20px">Every video starts as a board. Here is the planning behind the music videos and the Tamiya delivery-truck commercial parody.</p>
   <div class="boards" id="boards"></div>
  </div>
 </section>
@@ -269,7 +279,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    <p>This site is the permanent home for all of it, because great work shouldn't get lost in a feed.</p>
    <div class="skills">
     <div class="skill"><b>Image generation &amp; editing</b><span>Consistent characters, posters, comics</span></div>
-    <div class="skill"><b>AI music</b><span>Suno songwriting, bilingual lyrics, 99 tracks</span></div>
+    <div class="skill"><b>AI music</b><span>Suno songwriting, bilingual lyrics, 100 tracks</span></div>
     <div class="skill"><b>AI video</b><span>Storyboards, scene generation, lyric sync</span></div>
     <div class="skill"><b>Prompt craft</b><span>Directing multi-step creative pipelines</span></div>
    </div>
@@ -304,6 +314,11 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
 
 <script>
 const ART=[
+ ["haunted-house","Happy Halloween: Haunted House","horror","Halloween greeting poster"],
+ ["the-shining","The Shining: Heeere's Munchkin!","horror","Overlook Hotel tribute"],
+ ["korea-1","Breakfast Around the World: South Korea","comics","Day 8 · page 1"],
+ ["scuba","Deep Dive with Munchkin","munchkin","Good-night adventure series"],
+ ["daily-1026","What Day Is Today? Mini 4WD Day","daily","Daily calendar post · Oct 26"],
  ["alien","In Space No One Can Hear You Meow","horror","Alien (1979) tribute poster"],
  ["the-ring","The Ring: Seven Days, Nine Lives","horror","J-horror tribute"],
  ["starship","Starship Munchkin","munchkin","Launch-day trend art"],
@@ -319,7 +334,6 @@ const ART=[
  ["childs-play","Child's Play: Meow's Your Friend","horror","Killer-doll classic"],
  ["different-light-art","A Different Kind of Light","covers","Charity single key art"],
  ["japan-cup","Good Morning! Japan Cup Breakfast","comics","Manga-style daily comic"],
- ["nightmare","The Nightmare Before Meow-loween","horror","Halloween Town tribute"],
  ["halloween-mini4wd","Halloween x Mini 4WD","horror","Slasher-night race"],
  ["mind-blown","Mind = Blown","characters","Working with AI collaborators"],
  ["cuddle","Best Friends","munchkin","Kyle and Munchkin"],
@@ -329,26 +343,68 @@ const ART=[
  ["autumn","Autumn Portrait","munchkin","Anime-style portrait"],
  ["footprints-cover","足跡が途切れる場所でも","covers","Memorial song cover"],
  ["england","Breakfast Around the World: England","comics","Manga-style daily comic"],
- ["artist-day","Happy International Artist Day","comics","Daily calendar post"]
+ ["artist-day","Happy International Artist Day","daily","Daily calendar post · Oct 25"],
+ ["korea-2","Breakfast Around the World: South Korea (p.2)","comics","Day 8 · page 2"],
+ ["japan-cup-poster","Japan Cup Breakfast: Start Your Engines","munchkin","Movie-poster style"],
+ ["turkey","Breakfast Around the World: Turkey","comics","Day 5 · manga-style comic"],
+ ["daily-1023","What Day Is Today? Horror Movie Day","daily","Daily calendar post · Oct 23"],
+ ["france-1","Breakfast Around the World: France (p.1)","comics","Day 6 · page 1"],
+ ["france-2","Breakfast Around the World: France (p.2)","comics","Day 6 · page 2"],
+ ["chibi-sticker","Chibi Kyle Sticker","characters","Character sticker design"],
+ ["india-1","Breakfast Around the World: India (p.1)","comics","Day 7 · page 1"],
+ ["india-2","Breakfast Around the World: India (p.2)","comics","Day 7 · page 2"],
+ ["pumpkin-guide","Carve the Tamiya Pumpkin","horror","Illustrated carving guide"],
+ ["england-2","Breakfast Around the World: England (p.2)","comics","Day 4 · page 2"],
+ ["daily-1024","What Day Is Today? Oct 24","daily","Daily calendar post · Oct 24"],
+ ["mexico","Breakfast Around the World: Mexico","comics","Day 3 · manga-style comic"],
+ ["japan-cup-2","Japan Cup Breakfast Grand Prix (p.2)","comics","Manga-style daily comic"],
+ ["pit-crew-2b","Munchkin Pit Crew: Day 2 (p.2)","comics","Mini 4WD comic strip"],
+ ["daily-1021","What Day Is Today? Back to the Future Day","daily","Daily calendar post · Oct 21"]
 ];
-const CATS=[["all","All"],["horror","Horror Tributes"],["munchkin","Munchkin"],["comics","Comics"],["covers","Cover Art"],["characters","Characters"]];
+const CATS=[["all","All"],["horror","Horror Tributes"],["munchkin","Munchkin"],["comics","Comics"],["daily","Daily Series"],["covers","Cover Art"],["characters","Characters"]];
 const SONGS=[
- ["footprints","足跡が途切れる場所でも","Even Where the Footprints End","A Japanese post-hardcore ballad in memory of Kyle's late dog Buttons.","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e",["Metalcore","日本語"]],
- ["darkness-inside","Darkness Inside (Intro)","Shadows of Stone, track 1","Opens a 15-track cinematic techno-hardstyle concept album.","17fe4f71-5ced-4385-971d-3211e7e2ac02",["Hardstyle","Concept album"]],
- ["silent-scream","Silent Scream","Shadows of Stone","Jagged industrial hardstyle with dual heavy drops.","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a",["Hardstyle","Music video"],"poster"],
- ["boogie-man","Boogie Man","Horror","A children's horror waltz: detuned music box and pounding piano.","60feab2c-52fb-42de-82fb-d6f4c7cb5c86",["Horror","Orchestral"]],
- ["beyond-the-stars","Beyond the Stars","星の向こうへ","Atmospheric electronic metalcore about an astronaut calling home.","2c699a9a-bf3e-402a-9207-6ca25650f03d",["Metalcore","日本語","Music video"]],
- ["eternal-voice","Eternal Voice","Shadows of Stone","Dark hardstyle with ethereal, otherworldly vocals.","86d863dd-3956-4223-8911-f3a0c83987e2",["Hardstyle","Lyric video"],"poster"],
- ["forgotten-ones","The Forgotten Ones","忘れられた人々","A Japanese metalcore ballad for the elderly people the world walks past.","95e26a2e-838e-4a6c-9d33-e89000c6788a",["Metalcore","日本語","Music video"]],
- ["letter-front","前線からの手紙","Letter from the Front","A soldier's letter home to his little brother, in Japanese deathcore.","661ee057-bc6a-4aad-9ab1-f4f0594985c3",["Deathcore","日本語","Music video"]],
- ["good-night-children","Good Night, Children of the World","Nursery x metal","A sweet lullaby that turns into extreme metal screams.","25355328-7250-4a0e-8b81-815b5e132a30",["Experimental","Metal"]],
- ["mayhem","Mayhem on the Peninsula","Battlefield metalcore","Relentless double-kick metalcore with radio chatter and explosions.","13887b34-bf14-4fd6-af62-7240b66ee22f",["Metalcore","Music video"]],
- ["zero-viewers","ZERO VIEWERS","視聴者ゼロ","Bilingual hardstyle about streaming into the void.","2305492e-e317-41d5-922d-dc66a6d4f63f",["Hardstyle","日本語 / EN"]],
- ["mini4wd-friends","Mini 4WD Friends","ミニ四駆","Bilingual racing-game electropop for Mini 4WD fans.","6ff49468-9a69-4c68-8d70-5bc31121e2e2",["Electropop","日本語 / EN"]]
+ ["weight-she-carries","THE WEIGHT SHE CARRIES","彼女が背負うもの","Japanese female-vocal metalcore about the invisible pain women carry every month. Has a music video.","4327924f-189f-4be5-8a09-c95d8c919df1",["Metalcore","日本語","Music video"],["jp","metal"]],
+ ["footprints","足跡が途切れる場所でも","Even Where the Footprints End","A Japanese post-hardcore ballad in memory of Kyle's late dog Buttons.","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e",["Metalcore","日本語"],["jp","metal","life"]],
+ ["beyond-the-stars","Beyond the Stars","星の向こうへ","Atmospheric electronic metalcore about an astronaut calling home.","2c699a9a-bf3e-402a-9207-6ca25650f03d",["Metalcore","日本語","Music video"],["jp","metal"]],
+ ["silent-scream","Silent Scream","Shadows of Stone","Jagged industrial hardstyle with dual heavy drops.","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a",["Hardstyle","Music video"],["album","edm"],"poster/silent-scream"],
+ ["forgotten-ones","The Forgotten Ones","忘れられた人々","A Japanese metalcore ballad for the elderly people the world walks past.","95e26a2e-838e-4a6c-9d33-e89000c6788a",["Metalcore","日本語","Music video"],["jp","metal"]],
+ ["mayhem","Mayhem on the Peninsula","Battlefield metalcore","Relentless double-kick metalcore with radio chatter and explosions.","13887b34-bf14-4fd6-af62-7240b66ee22f",["Metalcore","Music video"],["metal","gaming"]],
+ ["requiem","Requiem for the Dead","Resident Evil fan song","Industrial metal with a horror orchestra, written for Resident Evil Requiem.","5e11cdf3-b6b1-4333-ade4-5c02e3f94af0",["Industrial metal","Horror"],["metal","gaming","horror"]],
+ ["boogie-man","Boogie Man","Horror","A children's horror waltz: detuned music box and pounding piano.","60feab2c-52fb-42de-82fb-d6f4c7cb5c86",["Horror","Orchestral"],["horror"]],
+ ["letter-front","前線からの手紙","Letter from the Front","A soldier's letter home to his little brother, in Japanese deathcore.","661ee057-bc6a-4aad-9ab1-f4f0594985c3",["Deathcore","日本語","Music video"],["jp","metal"]],
+ ["eternal-voice","Eternal Voice","Shadows of Stone","Dark hardstyle with ethereal, otherworldly vocals.","86d863dd-3956-4223-8911-f3a0c83987e2",["Hardstyle","Lyric video"],["album","edm"],"poster/eternal-voice"],
+ ["son-to-father","Son To Father Legacy","For my dad","Bay Area thrash for Kyle's dad, written in the style of Testament.","6c2168b1-70ff-4117-ae10-acd0bf44f1f5",["Thrash metal"],["metal","life"]],
+ ["rip-and-stream","Rip and Stream","DOOM stream anthem","Fast thrash metal written for a DOOM livestream.","80be5c66-0a46-4d35-acf9-3e98ed898fb0",["Thrash metal","Gaming"],["metal","gaming"]],
+ ["f-the-rescue","F**k The Rescue","Delivery-driver anthem","Brutal hardcore about Amazon delivery: 190 stops, 400 packages, and one more rescue.","8f6375dd-7e43-49e6-bbf1-c253d28631d0",["Hardcore","Explicit"],["metal","life"]],
+ ["darkness-inside","Darkness Inside (Intro)","Shadows of Stone, track 1","Opens a 15-track cinematic techno-hardstyle concept album.","17fe4f71-5ced-4385-971d-3211e7e2ac02",["Hardstyle","Concept album"],["album","edm"]],
+ ["good-night-children","Good Night, Children of the World","Nursery x metal","A sweet lullaby that turns into extreme metal screams.","25355328-7250-4a0e-8b81-815b5e132a30",["Experimental","Metal"],["metal","horror"]],
+ ["zero-viewers","ZERO VIEWERS","視聴者ゼロ","Bilingual hardstyle about streaming into the void.","2305492e-e317-41d5-922d-dc66a6d4f63f",["Hardstyle","日本語 / EN"],["jp","edm","gaming"]],
+ ["mini4wd-friends","Mini 4WD Friends","ミニ四駆","Bilingual racing-game electropop for Mini 4WD fans.","6ff49468-9a69-4c68-8d70-5bc31121e2e2",["Electropop","日本語 / EN"],["jp","edm","gaming"]],
+ ["tigers-roar","Tigers Roar Through the Night","阪神タイガース","A Japanese rock and synthwave chant for the Hanshin Tigers.","e143b275-d84c-4980-a7d6-d66320e06445",["Rock","日本語"],["jp","edm"]],
+ ["universe-war","Universe War","Human vs Alien","Gothic industrial rock: a hypnotic war anthem for humanity.","3a126b69-e5d0-4e52-9ed2-a7878a25dd49",["Industrial rock"],["metal"]],
+ ["open-beta","Open Beta Slaughter","Call of Duty beta","Thrash and metalcore about streaming the CoD open beta.","fefe96b0-cabd-4b11-b851-7f67e0e5d9c6",["Thrash","Metalcore"],["metal","gaming"]],
+ ["bedtime-apocalypse","Bedtime Apocalypse","Parenting metalcore","Comedy metalcore about bedtime with a toddler: raise the sippy cup!","fec0fd4c-014f-44bc-94be-9198082aebf1",["Metalcore","Comedy"],["metal","life"]],
+ ["unicorn-charge","Hiro's Unicorn Charge","For my son","Synthwave monster-truck racing anthem made for Kyle's son.","7f691770-f071-4c45-b7a0-cf39df4aa9c2",["Synthwave"],["edm","life"]],
+ ["pine-open-sky","Pine And Open Sky","Camping song","High-energy country-techno about camping trips.","cf2fa1ef-ff75-43e4-9fdb-02db3b68428f",["Country","Techno"],["edm","life"]],
+ ["black-lilies","Black Lilies Blooming","Thank you, X","Indie-pop thank-you to everyone who supports Kyle on X.","def7f421-c189-458a-911d-b7cb9c54b226",["Indie pop"],["life"]],
+ ["cat-sniff","Cat SniFF","I LOVE CATS","Silly surf-punk shout-along for cat people.","fe7d84f2-0fa4-4dc7-b806-b7715a7db1a6",["Surf punk","Comedy"],["life"]],
+ ["beyond-the-stone","Beyond the Stone","Shadows of Stone","Hopeful techno-hardstyle: light leaking through the cracks.","4a160b08-2b22-4ac9-889d-7378673c6da0",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["rough-with-the-wolves","Rough With the Wolves","Shadows of Stone","Heavy hardstyle about turning to run beside your fears.","0edd12da-235a-4fab-a3f9-7abdc8594807",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["pandemonium","Pandemonium","Shadows of Stone","Raw hardstyle with extreme distorted kicks: everything breaks loose.","4c3aebea-c06e-4f44-9221-74f39744fb47",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["state-of-stone","State of Stone","Shadows of Stone","Calm, grounded techno-hardstyle about learning to carry the weight.","412b7ea7-e03c-4936-bd0b-1459174c7503",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["beat-the-shadow","Beat the Shadow","Shadows of Stone","Hardstyle fight song: face the shadow down, even if it breaks your hands.","aa2e2a4c-bf4f-4a9f-a61e-4ac7b5a0583e",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["deepest-wave","Deepest Wave","Shadows of Stone","Melodic techno-hardstyle: the wave that breaks the stone open.","d46dc7f1-d9a4-4f88-bb79-f5b4f42c0bc3",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
+ ["the-stone-stays","The Stone Stays (Outro)","Shadows of Stone, outro","The album closer: “I carry what remains, and I keep moving.”","8eacf5dd-8c54-4479-97e3-bb9f29fa3011",["Hardstyle","Outro"],["album","edm"],"covers/shadows-of-stone"]
 ];
+const SCATS=[["all","All"],["album","Shadows of Stone"],["jp","日本語 Japanese"],["metal","Metal"],["edm","Hardstyle & Electronic"],["gaming","Gaming"],["life","Life & Family"],["horror","Horror"]];
+const SHOW=12;
 const VIDS=[
+ ["weight-she-carries","THE WEIGHT SHE CARRIES 彼女が背負うもの","Japanese metalcore music video","4327924f-189f-4be5-8a09-c95d8c919df1","2114880163540602990"],
+ ["world-we-left-behind","The World We Left Behind 僕たちが残した世界","Environmental anime music video",null,"2114295594676318247"],
  ["different-light","A Different Kind of Light 違う光","Charity single music video","025d9200-f3dc-4bb0-976a-91af5b84df49"],
+ ["price-tribute","Captain John Price Tribute","Call of Duty fan tribute with an original score (full 35 s)",null,"2112480433602802019"],
  ["beyond-the-stars","Beyond the Stars","Anime sci-fi music video","2c699a9a-bf3e-402a-9207-6ca25650f03d"],
+ ["eternal-voice","Eternal Voice","Shadows of Stone lyric music video","86d863dd-3956-4223-8911-f3a0c83987e2","2111762165409718341"],
  ["tamiya-ad","Tamiya Delivery 「押しても負けない」","Japanese TV-commercial comedy parody (full 30 s)",null],
  ["bay-area-boy","Bay Area Boy","Club anthem music video",null],
  ["forgotten-ones","The Forgotten Ones 忘れられた人々","Anime drama music video","95e26a2e-838e-4a6c-9d33-e89000c6788a"],
@@ -357,12 +413,22 @@ const VIDS=[
  ["silent-scream","Silent Scream","Lyric music video","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a"],
  ["mayhem","Mayhem on the Peninsula","Cinematic war music video","13887b34-bf14-4fd6-af62-7240b66ee22f"]
 ];
+const WORK=[
+ ["bots-lineup","Meet the Team: My AI Bots","10 AI bots that help make the videos, art, and daily posts",null,"2113209664775356663"],
+ ["creative-bot","Creative Bot: The Hub","Animated map of how the bots connect",null],
+ ["stream-graphics","Stream Overlay Pack","Welcome, Live Now, Be Right Back, and Thank You screens for @HellaBayArea streams",null]
+];
 const BOARDS=[
  ["tamiya-board","Tamiya Delivery: full commercial storyboard","Storyboard",1],
  ["ta1","Rain or wind… (frame 1)","Tamiya ad storyboard"],["ta2","The push (frame 2)","Tamiya ad storyboard"],["ta3","The argument (frame 3)","Tamiya ad storyboard"],
  ["ta4","Tamiya power (frame 4)","Tamiya ad storyboard"],["ta5","The rescue (frame 5)","Tamiya ad storyboard"],["ta6","End card (frame 6)","Tamiya ad storyboard"],
  ["light-board","A Different Kind of Light: music video storyboard","Storyboard",1],
- ["bab-board","Bay Area Boy: music video storyboard","Storyboard",1]
+ ["bab-board","Bay Area Boy: music video storyboard","Storyboard",1],
+ ["weight-board","The Weight She Carries: music video storyboard","Storyboard",1],
+ ["earth-board","The World We Left Behind: music video storyboard","Storyboard",1],
+ ["stars-board","Beyond the Stars: music video storyboard","Storyboard",1],
+ ["elder-board","The Forgotten Ones: music video storyboard","Storyboard",1],
+ ["letter-board","前線からの手紙 Letter from the Front: storyboard","Storyboard",1]
 ];
 const $=s=>document.querySelector(s);
 // gallery
@@ -379,13 +445,25 @@ const fl=$('#filters');CATS.forEach(([k,l],i)=>{const b=document.createElement('
 renderGallery('all');
 // songs
 const play='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
-$('#songs').innerHTML=SONGS.map(s=>`<a class="song reveal" href="https://suno.com/song/${s[4]}" target="_blank" rel="noopener">
- <div class="art"><img src="assets/${s[6]==='poster'?'poster':'covers'}/${s[0]}.webp" alt="${s[1]} cover" loading="lazy"><span class="play">${play}</span></div>
+let songAll=false,songCat='all';
+function renderSongs(){
+ const list=SONGS.filter(s=>songCat==='all'||s[6].includes(songCat));
+ $('#songs').innerHTML=list.map((s,k)=>`<a class="song${songCat==='all'&&!songAll&&k>=SHOW?' hide':''}" href="https://suno.com/song/${s[4]}" target="_blank" rel="noopener">
+ <div class="art"><img src="assets/${s[7]||'covers/'+s[0]}.webp" alt="${s[1]} cover" loading="lazy" decoding="async" width="600" height="600"><span class="play">${play}</span></div>
  <div class="meta"><h4>${s[1]}</h4><p class="jp" style="color:#c9a3a4;margin-bottom:4px">${s[2]}</p><p>${s[3]}</p>
- <div class="tags">${s[5].map(t=>`<i class="${/日本語/.test(t)?'jpt':''}">${t}</i>`).join('')}</div></div></a>`).join('');
+ <div class="tags">${s[5].map(t=>`<i class="${/日本語/.test(t)?'jpt':t==='Explicit'?'x':''}">${t}</i>`).join('')}</div></div></a>`).join('');
+ $('#song-count').textContent=`${list.length} ${songCat==='all'?'songs featured here (plus the charity single above)':'songs'}`;
+ const b=$('#song-more');b.style.display=(songCat==='all'&&!songAll&&list.length>SHOW)?'':'none';b.textContent=`Show all ${list.length} songs ↓`;
+}
+const sf=$('#song-filters');SCATS.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';
+ b.onclick=()=>{sf.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');songCat=k;renderSongs()};sf.appendChild(b)});
+$('#song-more').onclick=()=>{songAll=true;renderSongs()};
+renderSongs();
 // videos
-$('#videos-grid').innerHTML=VIDS.map(v=>`<div class="vcard reveal"><video controls preload="none" playsinline poster="assets/poster/${v[0]}.webp" src="assets/video/${v[0]}.mp4"></video>
- <div class="meta"><h4>${v[1]}</h4><p>${v[2]}${v[3]?` · <a href="https://suno.com/song/${v[3]}" target="_blank" rel="noopener">song on Suno ↗</a>`:''}</p></div></div>`).join('');
+const vcard=v=>`<div class="vcard reveal"><video controls preload="none" playsinline poster="assets/poster/${v[0]}.webp" src="assets/video/${v[0]}.mp4"></video>
+ <div class="meta"><h4>${v[1]}</h4><p>${v[2]}${v[3]?` · <a href="https://suno.com/song/${v[3]}" target="_blank" rel="noopener">song on Suno ↗</a>`:''}${v[4]?` · <a href="https://x.com/HellaBayArea/status/${v[4]}" target="_blank" rel="noopener">post on X ↗</a>`:''}</p></div></div>`;
+$('#videos-grid').innerHTML=VIDS.map(vcard).join('');
+$('#work-grid').innerHTML=WORK.map(vcard).join('');
 // boards
 const bItems=BOARDS.map(b=>({slug:b[0],title:b[1],cap:b[2]}));
 $('#boards').innerHTML='';BOARDS.forEach((b,i)=>{const f=document.createElement('figure');f.className='tile'+(b[3]?' wide':'');f.tabIndex=0;
@@ -405,9 +483,9 @@ let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:tr
 document.addEventListener('play',e=>{document.querySelectorAll('video').forEach(v=>{if(v!==e.target)v.pause()})},true);
 // hero collage: a mixed, slowly scrolling wall of art
 const COLS=[
- ["alien","different-light-art","pit-crew","dracula","caturday","bay-area-boy","the-ring","creative-mode"],
- ["japan-cup","starship","pet-sematary","footprints-cover","resident-evil","cuddle","mind-blown","halloween-mini4wd"],
- ["childs-play","autumn","england","friday13","neon-studio","jaws","bay-area-boy-club","pit-crew-2"]];
+ ["alien","different-light-art","haunted-house","pit-crew","dracula","caturday","bay-area-boy","the-ring","turkey","creative-mode"],
+ ["japan-cup","starship","pet-sematary","scuba","footprints-cover","resident-evil","cuddle","daily-1026","mind-blown","halloween-mini4wd"],
+ ["childs-play","autumn","the-shining","england","friday13","neon-studio","korea-1","jaws","bay-area-boy-club","pit-crew-2"]];
 const artBySlug=Object.fromEntries(ART.map(a=>[a[0],a]));
 $('#collage-in').innerHTML=COLS.map((c,ci)=>{const items=c.map(slug=>{const a=artBySlug[slug];const t=a?a[1].replace(/"/g,'&quot;'):'';
  return `<a href="#art" data-slug="${slug}" title="${t}"><img src="assets/collage/${slug}.webp" alt="${t}" decoding="async"></a>`}).join('');
