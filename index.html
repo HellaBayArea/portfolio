@@ -134,7 +134,7 @@ h3.sub{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;letter
 .skill b{display:block;font-size:14px}.skill span{color:var(--muted);font-size:13px}
 /* contact */
 .contact{text-align:center}
-.socials{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px}
+.socials{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:34px}
 .social{display:flex;flex-direction:column;align-items:center;gap:10px;padding:30px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-decoration:none;transition:.25s}
 .social:hover{transform:translateY(-4px);border-color:var(--red)}
 .social svg{width:36px;height:36px}
@@ -157,7 +157,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .feature{grid-template-columns:1fr;padding:18px}
  .about{grid-template-columns:minmax(0,1fr)}.about img{max-width:min(420px,100%);margin:0 auto}
  .boards .wide{grid-column:auto}
- .socials{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .socials{display:flex;flex-wrap:wrap;justify-content:center}.social{flex:0 1 calc(50% - 9px)}
 }
 @media (max-width:720px){
  .links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:#07080cf5;border-bottom:1px solid var(--line)}
@@ -168,7 +168,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .videos{grid-template-columns:1fr}
  .songs{grid-template-columns:repeat(2,1fr);gap:12px}
  .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
- .socials{grid-template-columns:1fr}
+ .socials{grid-template-columns:1fr}.social{flex-basis:100%}
  .skills{grid-template-columns:1fr}
  .stats{gap:22px}.stat b{font-size:32px}
  .collage{height:400px;border-radius:20px}.col a{border-radius:10px}
@@ -250,7 +250,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
   <div class="filters" id="song-filters"></div>
   <p class="count" id="song-count"></p>
   <div class="songs" id="songs"></div>
-  <div class="more"><button class="btn" id="song-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 100 songs on Suno →</a></div>
+  <div class="more"><button class="btn" id="song-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 100 songs on Suno →</a><a class="btn" href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer">Listen on Spotify →</a></div>
  </div>
 </section>
 
@@ -303,7 +303,10 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    <a class="social reveal" href="https://suno.com/@detnorske" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
     <b>Suno</b><span>@detnorske</span></a>
-   <a class="social reveal" href="https://www.amazon.com/hz/wishlist/ls/H9T2JK96ONGY?ref_=wl_share" target="_blank" rel="noopener noreferrer">
+   <a class="social reveal" href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+    <b>Spotify</b><span>Artist page</span></a>
+   <a class="social reveal" href="https://www.amazon.com/hz/wishlist/ls/H9T2JK96ONGY" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
     <b>Wish List</b><span>Amazon</span></a>
   </div>
