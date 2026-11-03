@@ -29,6 +29,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .burger{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
 /* hero */
 .hero{position:relative;min-height:min(100vh,920px);display:flex;align-items:center;overflow:hidden;padding:110px 0 70px}
+.soon+.hero{padding-top:60px}
 .hero-bg{position:absolute;inset:0;background:url(assets/poster/beyond-the-stars.webp) center/cover;opacity:.38;transform:scale(1.05);filter:saturate(1.1)}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,transparent 0,#07080c 75%),linear-gradient(transparent 60%,var(--bg))}
 .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
@@ -134,12 +135,28 @@ h3.sub{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;letter
 .skill b{display:block;font-size:14px}.skill span{color:var(--muted);font-size:13px}
 /* contact */
 .contact{text-align:center}
-.socials{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:34px}
+.socials{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:34px}
 .social{display:flex;flex-direction:column;align-items:center;gap:10px;padding:30px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-decoration:none;transition:.25s}
 .social:hover{transform:translateY(-4px);border-color:var(--red)}
 .social svg{width:36px;height:36px}
 .social b{font-size:18px}.social span{color:var(--muted);font-size:14px}
 footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-size:13px;text-align:center}
+/* coming soon banner */
+.soon{padding:84px 0 0;background:radial-gradient(ellipse at 80% 0,#4cc9f01f,transparent 60%),radial-gradient(ellipse at 10% 100%,#ff5fa21a,transparent 60%)}
+.soon-in{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:32px;align-items:center;background:linear-gradient(135deg,#141024,#0d1220);border:1px solid #4cc9f033;border-radius:24px;padding:24px;box-shadow:0 0 80px #4cc9f012}
+.soon .eyebrow{color:var(--cyan);border-color:#4cc9f055}
+.soon h2{margin:14px 0 6px}.soon h2 .jp{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:.6em;color:var(--cyan);letter-spacing:4px;margin-left:8px;text-shadow:0 0 24px #4cc9f088}
+.soon p{color:#cfd3de;margin:0 0 18px}
+.soon video{width:100%;aspect-ratio:16/9;display:block;background:#000;border-radius:16px;border:1px solid #ffffff14;box-shadow:0 20px 50px #000a}
+/* akari */
+.akari{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
+.akari-lead img{border-radius:20px;border:1px solid #4cc9f033;box-shadow:0 30px 60px #000a,0 0 60px #4cc9f01a;width:100%;aspect-ratio:1;object-fit:cover}
+.akari .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}
+.akari .styles{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 24px}
+.akari .styles i{font-style:normal;font-size:13px;color:#d6f3fc;border:1px solid #4cc9f055;background:#4cc9f00f;padding:5px 12px;border-radius:99px}
+.akari p{color:#d1d4de}
+.akari-sheets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.akari-sheets .tile{margin:0}.akari-sheets .tile img{aspect-ratio:3/2;object-fit:cover}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
 .lb.open{display:flex}
@@ -157,6 +174,8 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .feature{grid-template-columns:1fr;padding:18px}
  .about{grid-template-columns:minmax(0,1fr)}.about img{max-width:min(420px,100%);margin:0 auto}
  .boards .wide{grid-column:auto}
+ .soon-in{grid-template-columns:minmax(0,1fr);padding:18px}.soon-in>div:first-child{order:2}
+ .akari{grid-template-columns:minmax(0,1fr)}.akari-lead img{max-width:min(420px,100%);margin:0 auto}
  .socials{display:flex;flex-wrap:wrap;justify-content:center}.social{flex:0 1 calc(50% - 9px)}
 }
 @media (max-width:720px){
@@ -170,6 +189,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
  .socials{grid-template-columns:1fr}.social{flex-basis:100%}
  .skills{grid-template-columns:1fr}
+ .soon{padding-top:76px}.akari-sheets{grid-template-columns:minmax(0,1fr)}
  .stats{gap:22px}.stat b{font-size:32px}
  .collage{height:400px;border-radius:20px}.col a{border-radius:10px}
  .hero{padding:96px 0 40px;min-height:0}.hero .wrap{gap:28px}
@@ -183,9 +203,21 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  <a class="logo" href="#top">KYLE<span>.</span>RAMIREZ</a>
  <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
  <div class="links" onclick="this.classList.remove('open')">
-  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Storyboards</a><a href="music-videos.html">Videos</a><a href="#about">About</a><a href="#contact">Contact</a>
+  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Storyboards</a><a href="music-videos.html">Videos</a><a href="#akari">Akari</a><a href="#about">About</a><a href="#contact">Contact</a>
  </div>
 </div></nav>
+
+<section class="soon" id="coming-soon" aria-label="Coming soon: Akari">
+ <div class="wrap soon-in">
+  <div>
+   <span class="eyebrow">Coming Soon</span>
+   <h2>Akari<span class="jp">明里</span></h2>
+   <p>Kyle's original character, a Japanese-American heroine with one cybernetic blue eye. Watch the first teaser trailer.</p>
+   <a class="btn" href="#akari">Meet Akari →</a>
+  </div>
+  <video controls preload="metadata" playsinline poster="assets/poster/akari-teaser.jpg" src="assets/video/akari-teaser.mp4" aria-label="Akari 明里 teaser trailer"></video>
+ </div>
+</section>
 
 <header class="hero" id="top">
  <div class="hero-bg"></div>
@@ -271,6 +303,31 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  </div>
 </section>
 
+<section id="akari">
+ <div class="wrap">
+  <div class="sec-head reveal">
+   <h2><small class="jp">明里</small>Akari</h2>
+   <p class="lead">Kyle's original character. Her story is coming soon.</p>
+  </div>
+  <div class="akari">
+   <div class="akari-lead reveal"><img src="assets/akari/akari-avatar.jpg" alt="Akari portrait: long black hair, cherry blossoms, one glowing blue cybernetic eye, headphones" loading="lazy" width="656" height="656"></div>
+   <div class="reveal">
+    <p>Akari (明里) is 25 and Japanese-American, with one natural brown eye and one cybernetic blue eye. Long black hair, a cherry blossom motif, and headphones, in a tactical, street, and fusion style with US and Japan flag patches.</p>
+    <div class="facts">
+     <div class="skill"><b>Age</b><span>25</span></div>
+     <div class="skill"><b>Heritage</b><span>Japanese-American</span></div>
+     <div class="skill"><b>Eyes</b><span>One brown, one cybernetic blue</span></div>
+     <div class="skill"><b>Motif</b><span>Cherry blossoms 🌸</span></div>
+    </div>
+    <h3 class="sub" style="margin:0 0 6px;font-size:28px">Four styles</h3>
+    <div class="styles"><i>Gothic Cyberpunk</i><i>Tokyo Streetwear</i><i>Modern Cyberpunk Soldier</i><i>Japanese-American Fusion</i></div>
+    <div class="akari-sheets" id="akari-sheets"></div>
+    <div class="cta"><a class="btn primary" href="#coming-soon">▶ Watch the teaser</a></div>
+   </div>
+  </div>
+ </div>
+</section>
+
 <section id="about" class="alt">
  <div class="wrap about">
   <img src="assets/img/creative-mode.webp" alt="Kyle's chibi character in full creative mode" loading="lazy" class="reveal">
@@ -292,7 +349,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
 <section id="contact" class="contact">
  <div class="wrap">
   <h2 class="reveal"><small class="jp">つながろう</small>Let's Connect</h2>
-  <p class="lead reveal" style="margin:14px auto 0">New art drops on X and TikTok, and new songs land on Suno. For collaborations or AI creative roles, reach out on X.</p>
+  <p class="lead reveal" style="margin:14px auto 0">New art drops on X and TikTok, videos on YouTube, and new songs land on Suno. For collaborations or AI creative roles, reach out on X.</p>
   <div class="socials">
    <a class="social reveal" href="https://x.com/HellaBayArea" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -300,6 +357,9 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    <a class="social reveal" href="https://www.tiktok.com/@hellabayarea88" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9a4.8 4.8 0 0 1-1-.2z"/></svg>
     <b>TikTok</b><span>@hellabayarea88</span></a>
+   <a class="social reveal" href="https://www.youtube.com/@HellaBayArea" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+    <b>YouTube</b><span>@HellaBayArea</span></a>
    <a class="social reveal" href="https://suno.com/@detnorske" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
     <b>Suno</b><span>@detnorske</span></a>
@@ -477,9 +537,15 @@ const bItems=BOARDS.map(b=>({slug:b[0],title:b[1],cap:b[2]}));
 $('#boards').innerHTML='';BOARDS.forEach((b,i)=>{const f=document.createElement('figure');f.className='tile'+(b[3]?' wide':'');f.tabIndex=0;
  f.innerHTML=`<img src="assets/thumb/${b[0]}.webp" alt="${b[1]}" loading="lazy"><figcaption>${b[1]}<span>${b[2]}</span></figcaption>`;
  f.onclick=()=>openLb(bItems,i);$('#boards').appendChild(f)});
+// akari sheets (open in the lightbox)
+const AKARI=[{slug:'akari-character-sheet',title:'Akari 明里: character reference',cap:'Turnaround, expressions, outfits, details',src:'assets/akari/akari-character-sheet.jpg'},
+ {slug:'akari-outfits',title:'Akari: four outfit styles',cap:'Gothic Cyberpunk · Tokyo Streetwear · Cyberpunk Soldier · Fusion',src:'assets/akari/akari-outfits.jpg'}];
+AKARI.forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
+ f.innerHTML=`<img src="assets/akari/${a.slug}-thumb.jpg" alt="${a.title}" loading="lazy" width="800" height="533"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
+ f.onclick=()=>openLb(AKARI,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(AKARI,i)};$('#akari-sheets').appendChild(f)});
 // lightbox
 let lbSet=[],lbI=0;const lb=$('#lb');
-function show(){const a=lbSet[lbI];$('#lb-img').src=`assets/img/${a.slug}.webp`;$('#lb-img').alt=a.title;$('#lb-cap').innerHTML=`${a.title}<span>${a.cap} · ${lbI+1} / ${lbSet.length}</span>`}
+function show(){const a=lbSet[lbI];$('#lb-img').src=a.src||`assets/img/${a.slug}.webp`;$('#lb-img').alt=a.title;$('#lb-cap').innerHTML=`${a.title}<span>${a.cap} · ${lbI+1} / ${lbSet.length}</span>`}
 function openLb(set,i){lbSet=set;lbI=i;show();lb.classList.add('open');document.body.style.overflow='hidden'}
 function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
 function step(d){lbI=(lbI+d+lbSet.length)%lbSet.length;show()}
