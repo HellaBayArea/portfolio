@@ -76,7 +76,9 @@ h2 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;lett
 .filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:99px;font:500 14px Inter,sans-serif;cursor:pointer;transition:.2s}
 .filters button.on,.filters button:hover{color:#fff;border-color:var(--red);background:#e5383b22}
 /* gallery masonry */
-.masonry{columns:4 260px;column-gap:16px}
+.masonry{columns:5 190px;column-gap:12px}
+.masonry .tile{margin-bottom:12px}
+.art-more{display:flex;justify-content:center;margin-top:22px}
 .tile{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--card);border:1px solid #ffffff0d}
 .tile img{width:100%;height:auto;transition:transform .5s}
 .tile:hover img{transform:scale(1.04)}
@@ -184,7 +186,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .links.open{display:flex}.links a{padding:14px 6vw;font-size:16px}
  .burger{display:block}
  section{padding:64px 0}
- .masonry{columns:2 150px;column-gap:10px}.tile{margin-bottom:10px}
+ .masonry{columns:2 150px;column-gap:10px}.masonry .tile{margin-bottom:10px}
  .videos{grid-template-columns:1fr}
  .songs{grid-template-columns:repeat(2,1fr);gap:12px}
  .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
@@ -255,6 +257,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
   </div>
   <div class="filters" id="filters"></div>
   <div class="masonry" id="gallery"></div>
+  <div class="art-more"><button class="btn" id="art-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button></div>
  </div>
 </section>
 
@@ -502,16 +505,21 @@ const BOARDS=[
 const $=s=>document.querySelector(s);
 // gallery
 let current=[];
+let artAll=false,artCat='all';const ART_SHOW=10;
 function renderGallery(cat){
+ artCat=cat;
  const g=$('#gallery');g.innerHTML='';
  current=ART.filter(a=>cat==='all'||a[2]===cat).map(a=>({slug:a[0],title:a[1],cap:a[3]}));
- current.forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
+ const lim=(cat==='all'&&!artAll)?ART_SHOW:current.length;
+ const mb=$('#art-more');mb.parentNode.style.display=lim<current.length?'':'none';mb.textContent=`Show all ${current.length} images ↓`;
+ current.slice(0,lim).forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
   f.innerHTML=`<img src="assets/thumb/${a.slug}.webp" alt="${a.title.replace(/"/g,'&quot;')}" loading="lazy"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
   f.onclick=()=>openLb(current,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(current,i)};g.appendChild(f);});
 }
 const fl=$('#filters');CATS.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';
  b.onclick=()=>{fl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderGallery(k)};fl.appendChild(b)});
 renderGallery('all');
+$('#art-more').onclick=()=>{artAll=true;renderGallery(artCat)};
 // songs
 const play='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
 let songAll=false,songCat='all';
