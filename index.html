@@ -156,6 +156,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
 .akari .styles i{font-style:normal;font-size:13px;color:#d6f3fc;border:1px solid #4cc9f055;background:#4cc9f00f;padding:5px 12px;border-radius:99px}
 .akari p{color:#d1d4de}
 .akari-sheets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.akari-sheets .tile:last-child:nth-child(odd){grid-column:1/-1}.akari-sheets .tile:last-child:nth-child(odd) img{aspect-ratio:16/7}
 .akari-sheets .tile{margin:0}.akari-sheets .tile img{aspect-ratio:3/2;object-fit:cover}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
@@ -539,7 +540,8 @@ $('#boards').innerHTML='';BOARDS.forEach((b,i)=>{const f=document.createElement(
  f.onclick=()=>openLb(bItems,i);$('#boards').appendChild(f)});
 // akari sheets (open in the lightbox)
 const AKARI=[{slug:'akari-character-sheet',title:'Akari 明里: character reference',cap:'Turnaround, expressions, outfits, details',src:'assets/akari/akari-character-sheet.jpg'},
- {slug:'akari-outfits',title:'Akari: four outfit styles',cap:'Gothic Cyberpunk · Tokyo Streetwear · Cyberpunk Soldier · Fusion',src:'assets/akari/akari-outfits.jpg'}];
+ {slug:'akari-outfits',title:'Akari: four outfit styles',cap:'Gothic Cyberpunk · Tokyo Streetwear · Cyberpunk Soldier · Fusion',src:'assets/akari/akari-outfits.jpg'},
+ {slug:'akari-angel-demon',title:'Akari: Angel & Demon',cap:'Two winged forms: dark and light',src:'assets/akari/akari-angel-demon.jpg'}];
 AKARI.forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
  f.innerHTML=`<img src="assets/akari/${a.slug}-thumb.jpg" alt="${a.title}" loading="lazy" width="800" height="533"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
  f.onclick=()=>openLb(AKARI,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(AKARI,i)};$('#akari-sheets').appendChild(f)});
