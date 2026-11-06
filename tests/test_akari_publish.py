@@ -122,6 +122,24 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(before, self.snapshot())
         self.assertFalse((self.dest / "akari/stories/catalog.json").exists())
 
+    def test_entry_one_signature_appends_once(self):
+        closing = publisher.ENTRY_ONE_CLOSING
+        signed = publisher.ENTRY_ONE_SIGNATURE
+        self.assertEqual(publisher.apply_entry_signature(1, ["Hello.", closing]), ["Hello.", signed])
+        self.assertEqual(publisher.apply_entry_signature(1, ["Hello.", signed]), ["Hello.", signed])
+        self.assertEqual(publisher.apply_entry_signature(2, ["Hello.", closing]), ["Hello.", closing])
+        write_inbox(self.inbox, [{"number": 1, "text": f"# Entry 1\n\nHello from the journal.\n\n{closing}\n"}])
+        self.publish("2026-11-06T06:59:00-08:00")
+        self.assertFalse((self.dest / "akari/stories/1/index.html").exists())
+        self.publish("2026-11-06T07:00:00-08:00")
+        page = (self.dest / "akari/stories/1/index.html").read_text(encoding="utf-8")
+        self.assertEqual(page.count("🌸💙"), 1)
+        self.assertIn(signed, page)
+        self.assertNotIn("2026-11-06", page)
+        catalog = json.loads((self.dest / "akari/stories/catalog.json").read_text(encoding="utf-8"))
+        self.assertEqual(catalog["entries"][0]["paragraphs"][-1], signed)
+        self.assertEqual((self.dest / "akari/stories/images/entry_01.jpg").read_bytes(), JPEG)
+
     def test_publishes_entry_one_at_0700_pacific(self):
         write_inbox(self.inbox, [{"number": 1, "manifest_text": "# Entry 1\n\nAlpha 1 & beta.\n\nDon't stop.\n"}])
         result = self.publish("2026-11-06T07:00:00-08:00")
@@ -342,10 +360,11 @@ class PublishTests(unittest.TestCase):
         first = next(item for item in manifest["entries"] if item["number"] == 1)
         second_spec = next(item for item in manifest["entries"] if item["number"] == 2)
         source = (inbox / first["text_file"]).read_text(encoding="utf-8")
-        paragraphs = publisher.parse_entry_markdown(source, 1)
+        paragraphs = publisher.apply_entry_signature(1, publisher.parse_entry_markdown(source, 1))
         page = (self.dest / "akari/stories/1/index.html").read_text(encoding="utf-8")
         for paragraph in paragraphs:
             self.assertIn(publisher.esc_text(paragraph), page)
+        self.assertEqual(page.count("🌸💙"), 1)
         image_name = first["image"]["filename"]
         copied = (self.dest / "akari/stories/images" / image_name).read_bytes()
         self.assertEqual(copied, (inbox / first["image"]["path"]).read_bytes())
@@ -359,6 +378,9 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(again["reason"], "before-release")
         second = publisher.publish(inbox, self.dest, at("2026-11-07T07:00:00-08:00"), True)
         self.assertEqual(second["number"], 2)
+        second_page = (self.dest / "akari/stories/2/index.html").read_text(encoding="utf-8")
+        self.assertNotIn("🌸💙", second_page)
+        self.assertNotIn("2026-11-07", second_page)
         second_image = self.dest / "akari/stories/images" / second_spec["image"]["filename"]
         self.assertEqual(second_image.read_bytes(), (inbox / second_spec["image"]["path"]).read_bytes())
         self.assertEqual((self.dest / "akari/stories/images" / image_name).read_bytes(), copied)

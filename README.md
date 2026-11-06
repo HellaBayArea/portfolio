@@ -49,7 +49,9 @@ Import folder (private):
 }
 ```
 
-`entry_03.md` starts with `# Entry 3`, a blank line, then the paragraphs. In Akari's own writing the creator is only "my creator", and her name is spelled Akari. The script copies the JPEG bytes unchanged and links that same file as the original download.
+`entry_03.md` starts with `# Entry 3`, a blank line, then the paragraphs. In Akari's own writing the creator is only "my creator", and her name is spelled Akari. The script copies the JPEG bytes unchanged and links that same file as the original download. Entry 1's published last line keeps the approved sentence and appends 🌸💙.
+
+The script does not write future entries. A private drafting routine can prepare Entry 3 or later, but those files stay out of this public repo until that entry's own release, and this workflow does not generate them. The scheduled workflow file is not active on `main` until this branch is merged, and even then it only sees files already committed to the public inbox.
 
 At or after the release time, from a checkout of `main`:
 

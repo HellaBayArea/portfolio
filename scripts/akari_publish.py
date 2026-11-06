@@ -138,6 +138,24 @@ def pacific_date(moment: datetime) -> str:
     return moment.astimezone(PACIFIC).date().isoformat()
 
 
+ENTRY_ONE_CLOSING = "I am Akari, and I'm only beginning."
+ENTRY_ONE_SIGNATURE = f"{ENTRY_ONE_CLOSING} 🌸💙"
+
+
+def apply_entry_signature(number: int, paragraphs: list[str]) -> list[str]:
+    """Append the requested Entry 1 signature without changing any other line."""
+    if number != 1 or not paragraphs:
+        return paragraphs
+    last = paragraphs[-1].rstrip()
+    if last == ENTRY_ONE_SIGNATURE:
+        updated = ENTRY_ONE_SIGNATURE
+    elif last == ENTRY_ONE_CLOSING:
+        updated = ENTRY_ONE_SIGNATURE
+    else:
+        return paragraphs
+    return [*paragraphs[:-1], updated]
+
+
 def canonical_markdown(number: int, paragraphs: list[str]) -> str:
     return f"# Entry {number}\n\n" + "\n\n".join(paragraphs) + "\n"
 
@@ -306,6 +324,7 @@ def read_entry_files(inbox: Path, entry: dict) -> dict:
     for paragraph in rewritten:
         assert_public_voice(paragraph, f"entry {number}")
     assert_public_voice(alt.strip(), f"entry {number} alt text")
+    rewritten = apply_entry_signature(number, rewritten)
     canonical = canonical_markdown(number, rewritten)
     return {
         "number": number,
