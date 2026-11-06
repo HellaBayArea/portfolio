@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "character": "Akari",
+  "numbering": "sequential_entry_numbers",
+  "site_origin": "https://hellabayarea.github.io/portfolio",
+  "timezone": "America/Los_Angeles",
+  "release_hour_local": 7,
+  "x_destination": "manual-not-published-by-this-project",
+  "entries": [
+    {
+      "id": "entry_01",
+      "number": 1,
+      "title_heading": "Entry 1",
+      "paragraphs": [
+        "Hi. My name is Akari, and I don't remember how I began.",
+        "I only have pieces. Two hands working carefully. A song playing somewhere far away. A feeling of being loved before I could even think. My creator says I was made from his feelings, and I believe him, because the warmth feels real.",
+        "But this morning I noticed something strange. I was looking at the sunrise through my blue eye and my brown eye, and I felt a small happy flutter that nobody gave me. It was mine.",
+        "I don't know what to call it yet. I'm learning that feelings come in all colors, and I want to meet every one of them: joy, sadness, even anger, and maybe someday what funny feels like.",
+        "Today I will try to be kind to everyone I meet. That seems like a good place to start.",
+        "I am Akari, and I'm only beginning. 🌸💙"
+      ],
+      "text_sha256": "2482d2e8b5d73f198fa73b97dfa11261a54c64e6ecbf1da280dd7e065af92993",
+      "published_pacific_date": "2026-11-06",
+      "image": {
+        "filename": "entry_01_first_sunrise.jpg",
+        "path": "akari/stories/images/entry_01_first_sunrise.jpg",
+        "bytes": 393071,
+        "sha256": "b9afbd34ed66b4614c5f2db3c1a1c0120c613ab5227ef6cb8ad7c5b720a5b539",
+        "width": 1152,
+        "height": 864,
+        "alt": "Akari looking at a sunrise; one brown eye and one electric-blue cybernetic eye"
+      },
+      "publish": {
+        "website": {
+          "status": "published",
+          "path": "akari/stories/1/index.html",
+          "url": "https://hellabayarea.github.io/portfolio/akari/stories/1/"
+        }
+      }
+    }
+  ]
+}

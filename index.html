@@ -161,6 +161,13 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
 .akari-sheets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .akari-sheets .tile:last-child:nth-child(odd){grid-column:1/-1}.akari-sheets .tile:last-child:nth-child(odd) img{aspect-ratio:16/7}
 .akari-sheets .tile{margin:0}.akari-sheets .tile img{aspect-ratio:3/2;object-fit:cover}
+.akari-journal h3.sub{margin:36px 0 8px;font-size:28px}
+.akari-journal p{color:#d1d4de}
+.akari-empty{border:1px dashed #4cc9f055;border-radius:18px;padding:18px 20px;background:#4cc9f00c}
+.akari-empty p{margin:0 0 10px}.akari-empty p:last-child{margin:0}
+.akari-latest{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:18px;align-items:center;background:#0d1220;border:1px solid #4cc9f033;border-radius:18px;padding:14px}
+.akari-latest img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#07080c;border-radius:12px}
+.akari-latest h4{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:32px;letter-spacing:1px;margin:0 0 8px}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
 .lb.open{display:flex}
@@ -180,6 +187,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  .boards .wide{grid-column:auto}
  .soon-in{grid-template-columns:minmax(0,1fr);padding:18px}.soon-in>div:first-child{order:2}
  .akari{grid-template-columns:minmax(0,1fr)}.akari-lead img{max-width:min(420px,100%);margin:0 auto}
+ .akari-latest{grid-template-columns:1fr}
  .socials{display:flex;flex-wrap:wrap;justify-content:center}.social{flex:0 1 calc(50% - 9px)}
 }
 @media (max-width:720px){
@@ -207,7 +215,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  <a class="logo" href="#top">KYLE<span>.</span>RAMIREZ</a>
  <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
  <div class="links" onclick="this.classList.remove('open')">
-  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Storyboards</a><a href="music-videos.html">Videos</a><a href="#akari">Akari</a><a href="#about">About</a><a href="#contact">Contact</a>
+  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Storyboards</a><a href="music-videos.html">Videos</a><a href="#akari">Akari</a><a href="akari/stories/">Stories</a><a href="#about">About</a><a href="#contact">Contact</a>
  </div>
 </div></nav>
 
@@ -312,7 +320,7 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  <div class="wrap">
   <div class="sec-head reveal">
    <h2><small class="jp">明里</small>Akari</h2>
-   <p class="lead">Kyle's original character. Her story is coming soon.</p>
+   <p class="lead">Kyle's original character. Her daily journal starts with Entry 1.</p>
   </div>
   <div class="akari">
    <div class="akari-lead reveal"><img src="assets/akari/akari-avatar.jpg" alt="Akari portrait: long black hair, cherry blossoms, one glowing blue cybernetic eye, headphones" loading="lazy" width="656" height="656"></div>
@@ -331,6 +339,20 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
     <p style="font-size:13px;color:#9aa0b4;margin:18px 0 0">Akari 明里 is an original character created by Kyle Ramirez. © 2026 Kyle Ramirez. All rights reserved.</p>
     <div class="cta"><a class="btn primary" href="#coming-soon">▶ Watch the teaser</a></div>
    </div>
+  </div>
+  <div class="akari-journal reveal" id="akari-stories">
+   <h3 class="sub">Daily stories</h3>
+   <p>Akari tells one numbered story at a time, with the original image beside it. The journal starts at Entry 1.</p>
+   <!-- akari-stories:start -->
+<div class="akari-latest">
+ <a href="akari/stories/1/"><img src="akari/stories/images/entry_01_first_sunrise.jpg" alt="Akari looking at a sunrise; one brown eye and one electric-blue cybernetic eye" width="1152" height="864"></a>
+ <div>
+  <h4>Entry 1</h4>
+  <p>Hi. My name is Akari, and I don't remember how I began.</p>
+  <div class="cta"><a class="btn" href="akari/stories/">All entries</a><a class="btn" href="akari/stories/1/">Read Entry 1</a></div>
+ </div>
+</div>
+<!-- akari-stories:end -->
   </div>
   <div class="akari-video reveal">
    <h3 class="sub" style="margin:44px 0 12px;font-size:28px">Akari video</h3>
