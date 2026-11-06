@@ -18,7 +18,7 @@ Stories are website-only. This repo does not post to X. Pages do not collect com
 
 Release floors, America/Los_Angeles, one entry per run:
 
-- Entry 1: 2026-11-06 07:00
+- Entry 1: 2026-11-06 06:42, the owner's "Publish now" authorization. Later entries are not included.
 - Entry 2: 2026-11-07 07:00
 - Entry 3 and later: `release_not_before` in the private manifest. A date means 07:00 that Pacific morning. Earlier times are raised to 07:00. The next entry also waits until the Pacific date after the previous entry was published.
 

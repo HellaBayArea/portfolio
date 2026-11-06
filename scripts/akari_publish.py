@@ -6,11 +6,13 @@ This script is website-only. It never posts to X and never marks X as published.
 The public repository must not contain an unpublished story. Keep the inbox
 outside the repo until that entry's release time, then run this script. It
 writes one entry per invocation, in numerical order, and only at or after
-07:00 America/Los_Angeles on that entry's release day.
+that entry's release time. The usual release time is 07:00
+America/Los_Angeles. Entry 1 is the exception: the owner authorized
+"Publish now" at 06:42 America/Los_Angeles on 2026-11-06.
 
 Entries 1 and 2 have built-in floors:
 
-  Entry 1  2026-11-06 07:00 America/Los_Angeles
+  Entry 1  2026-11-06 06:42 America/Los_Angeles
   Entry 2  2026-11-07 07:00 America/Los_Angeles
 
 Entry 3 and later require ``release_not_before`` in the private manifest.
@@ -46,7 +48,9 @@ STORY_ROOT = Path("akari/stories")
 MARKER_START = "<!-- akari-stories:start -->"
 MARKER_END = "<!-- akari-stories:end -->"
 BUILTIN_NOT_BEFORE = {
-    1: "2026-11-06T07:00:00-08:00",
+    # Owner authorization on 2026-11-06, "Publish now", about 06:42 Pacific.
+    # This one instant is kept exactly. It does not move the 07:00 floor.
+    1: "2026-11-06T06:42:00-08:00",
     2: "2026-11-07T07:00:00-08:00",
 }
 FORBIDDEN_VOICE = ("kyle", "ramirez", "カイル", "ラミレス", "明里")
@@ -106,7 +110,7 @@ def parse_now(value: str | None) -> datetime:
     return parsed
 
 
-def parse_not_before(value: str) -> datetime:
+def parse_not_before(value: str, *, honor_exact: bool = False) -> datetime:
     raw = value.strip()
     if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw):
         year, month, day = (int(part) for part in raw.split("-"))
@@ -117,13 +121,15 @@ def parse_not_before(value: str) -> datetime:
             raise PublishError("release_not_before must include a timezone offset or be a date")
         local = local.astimezone(PACIFIC)
     seven = local.replace(hour=7, minute=0, second=0, microsecond=0)
-    if local < seven:
+    if local < seven and not honor_exact:
         return seven
     return local
 
 
 def effective_not_before(number: int, raw: str | None) -> datetime:
-    floors = [parse_not_before(BUILTIN_NOT_BEFORE[number])] if number in BUILTIN_NOT_BEFORE else []
+    floors = []
+    if number in BUILTIN_NOT_BEFORE:
+        floors.append(parse_not_before(BUILTIN_NOT_BEFORE[number], honor_exact=(number == 1)))
     if raw:
         floors.append(parse_not_before(raw))
     elif number not in BUILTIN_NOT_BEFORE:
