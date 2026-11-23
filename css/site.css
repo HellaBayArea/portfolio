@@ -183,15 +183,10 @@ summary::after {
 .hero-line { margin: 10px auto 0; max-width: 28rem; color: var(--muted); }
 .hero-layout {
   position: relative;
-  width: min(1100px, calc(100% - 48px));
+  width: min(1180px, calc(100% - 48px));
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1fr minmax(240px, 420px) 1fr;
-  grid-template-areas: "left portrait right";
-  align-items: center;
-  column-gap: 28px;
 }
-.portrait { grid-area: portrait; position: relative; aspect-ratio: 4 / 5; background: #050505; justify-self: center; width: 100%; }
+.portrait { position: relative; aspect-ratio: 16 / 9; background: #050505; width: 100%; overflow: hidden; }
 .portrait video { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .holo-lines, .holo-scan { position: absolute; inset: 0; pointer-events: none; }
 .holo-lines {
@@ -216,11 +211,24 @@ summary::after {
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(215, 246, 255, 0.35), inset 0 0 40px rgba(80, 180, 220, 0.12);
 }
-.callouts { grid-area: left; display: flex; flex-direction: column; gap: 22px; margin: 92px 0 0; padding: 0; list-style: none; width: min(100%, 260px); align-self: start; }
-.callouts.right { grid-area: right; justify-self: start; }
-.callouts.left { justify-self: end; }
+.callouts {
+  position: absolute;
+  z-index: 2;
+  top: 18%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: min(230px, 26%);
+  pointer-events: none;
+}
+.callouts.left { left: 2.2%; right: auto; }
+.callouts.right { right: 2.2%; left: auto; }
 .callout { display: flex; align-items: center; gap: 10px; }
 .callouts.left .callout { flex-direction: row-reverse; text-align: right; }
+.callout-text { text-shadow: 0 1px 2px #000, 0 0 12px rgba(0, 0, 0, 0.9); }
 .callout-dot {
   width: 7px;
   height: 7px;
@@ -373,17 +381,28 @@ dialog#lightbox figcaption { margin-top: 10px; color: var(--muted); }
   .menu { position: static; border: 0; background: transparent; min-width: 0; padding: 0 0 8px 8px; }
   .menu::before { display: none; }
   .hero-layout {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "portrait portrait"
       "left right";
     row-gap: 16px;
   }
-  .callouts, .callouts.left, .callouts.right { width: auto; justify-self: stretch; margin-top: 0; align-self: stretch; }
+  .portrait { grid-area: portrait; width: 100%; }
+  .callouts, .callouts.left, .callouts.right {
+    position: static;
+    width: auto;
+    top: auto;
+    left: auto;
+    right: auto;
+    pointer-events: auto;
+  }
+  .callouts.left { grid-area: left; }
+  .callouts.right { grid-area: right; }
   .callouts.left .callout, .callout { flex-direction: row; text-align: left; }
   .callout { align-items: flex-start; border: 1px solid var(--line); padding: 10px; background: #050505; }
+  .callout-text { text-shadow: none; }
   .callout-dot, .leaders { display: none; }
-  .portrait { width: min(78vw, 420px); }
 }
 @media (max-width: 700px) {
   .wrap, .hero-layout { width: min(1120px, calc(100% - 32px)); }

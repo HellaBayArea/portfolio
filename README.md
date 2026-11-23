@@ -6,12 +6,12 @@ Static site for GitHub Pages. The homepage is the Akari hero, a short Featured W
 
 ## Hero video
 
-The homepage reads two files. Replace them when the final Akari hero is ready. Do not change the paths in `index.html`.
+The homepage reads two files. Replace them to swap the hero. Do not change the paths in `index.html`.
 
-- `assets/hero/akari_hero.mp4` — looping, muted hero video
-- `assets/hero/akari_hero.jpg` — poster, and the still used when reduced motion pauses the video
+- `assets/hero/akari_hero.mp4` — looping, muted hero video. The approved cut is 1280×720, about 6 seconds.
+- `assets/hero/akari_hero.jpg` — poster, and the still used when reduced motion pauses the video.
 
-The placeholder is a cropped still of the Entry 1 sunrise portrait: brown eye on the left of the image, electric cyan eye on the right, freckles visible. `assets/video/akari-teaser.mp4` is a wide title sequence, so it plays on the Videos page instead of filling the hero.
+The approved cut centers Akari, with the Golden Gate on the left and Tokyo and Fuji on the right. The frame is 16:9 with `object-fit: cover` and `object-position: center 30%`. Labels sit on the side edges on a wide screen and under the frame on a small screen.
 
 ---
 
