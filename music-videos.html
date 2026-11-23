@@ -3,221 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Videos · Kyle Ramirez</title>
-<meta name="description" content="Full AI videos by Kyle Ramirez: storyboarded, generated scene by scene, timed to the vocals, and subtitled in Japanese and English.">
-<meta property="og:title" content="Videos · Kyle Ramirez">
-<meta property="og:description" content="Full AI videos from the Bay Area, in Japanese and English.">
-<meta property="og:image" content="assets/mv/different-light.jpg">
-<meta name="theme-color" content="#07080c">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#07080c;--bg2:#0d0f16;--card:#12151e;--line:#222736;--text:#eef0f6;--muted:#9aa1b4;--red:#e5383b;--amber:#ffb347;--cyan:#4cc9f0;--radius:16px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans JP",system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}img{max-width:100%;display:block}
-.wrap{width:min(1200px,92vw);margin:0 auto}
-.jp{font-family:"Noto Sans JP",Inter,sans-serif}
-/* nav */
-nav{position:fixed;inset:0 0 auto 0;z-index:50;background:linear-gradient(#07080cee,#07080c99);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:26px;letter-spacing:2px;text-decoration:none}
-.logo span{color:var(--red)}
-.links{display:flex;gap:22px;flex-wrap:wrap}
-.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:.2s}
-.links a:hover{color:var(--text)}
-.burger{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
-/* hero */
-.hero{position:relative;min-height:min(100vh,920px);display:flex;align-items:center;overflow:hidden;padding:110px 0 70px}
-.hero-bg{position:absolute;inset:0;background:url(assets/poster/beyond-the-stars.webp) center/cover;opacity:.38;transform:scale(1.05);filter:saturate(1.1)}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,transparent 0,#07080c 75%),linear-gradient(transparent 60%,var(--bg))}
-.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.eyebrow{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid #ffb34755;padding:6px 12px;border-radius:99px}
-h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(64px,10vw,140px);line-height:.88;margin:18px 0 6px;letter-spacing:2px}
-h1 .accent{color:var(--red);text-shadow:0 0 40px #e5383b66}
-.jpname{color:var(--muted);font-size:18px;letter-spacing:6px;margin-bottom:18px}
-.tagline{font-size:clamp(17px,2vw,21px);color:#d6d9e3;max-width:560px}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:#ffffff08;transition:.2s}
-.btn:hover{background:#ffffff14;transform:translateY(-1px)}
-.btn.primary{background:var(--red);border-color:var(--red)}
-.btn.primary:hover{background:#ff4b4e}
-.stats{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
-.stat b{display:block;font-family:"Bebas Neue",sans-serif;font-size:40px;font-weight:400;line-height:1}
-.stat span{color:var(--muted);font-size:13px}
-/* hero collage */
-.collage{position:relative;height:600px;overflow:hidden;border-radius:26px;
- -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
-.collage-in{position:absolute;inset:-60px -40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;transform:rotate(-6deg)}
-.col{display:flex;flex-direction:column;gap:14px;animation:up 60s linear infinite;will-change:transform}
-.col.c2{animation-name:down;animation-duration:72s}.col.c3{animation-duration:66s}
-.collage:hover .col{animation-play-state:paused}
-.col a{display:block;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 18px 40px #000b,0 0 0 1px #ffffff1a;transition:transform .35s,box-shadow .35s;background:var(--card)}
-.col a:hover{transform:scale(1.04);box-shadow:0 24px 50px #000d,0 0 0 2px var(--red);z-index:2}
-.col img{width:100%;height:auto;filter:saturate(1.05) contrast(1.03)}
-.col a::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#07080c66)}
-@keyframes up{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 7px))}}
-@keyframes down{from{transform:translateY(calc(-50% - 7px))}to{transform:translateY(0)}}
-.collage-glow{position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,#e5383b33,transparent 70%);pointer-events:none;z-index:-1}
-.collage-wrap{position:relative}
-.collage-tag{position:absolute;left:18px;bottom:18px;z-index:3;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:#07080ccc;border:1px solid #ffffff22;padding:7px 12px;border-radius:99px;backdrop-filter:blur(6px);text-decoration:none;color:#fff}
-.collage-tag:hover{border-color:var(--red)}
-@media (prefers-reduced-motion:reduce){.col{animation:none}}
-/* sections */
-section{padding:90px 0;position:relative}
-.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
-h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(44px,6vw,72px);line-height:.95;margin:0;letter-spacing:1.5px}
-h2 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;letter-spacing:4px;color:var(--red);margin-bottom:8px}
-.lead{color:var(--muted);max-width:520px;margin:0}
-.alt{background:var(--bg2);border-top:1px solid #ffffff08;border-bottom:1px solid #ffffff08}
-/* filters */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:99px;font:500 14px Inter,sans-serif;cursor:pointer;transition:.2s}
-.filters button.on,.filters button:hover{color:#fff;border-color:var(--red);background:#e5383b22}
-/* gallery masonry */
-.masonry{columns:4 260px;column-gap:16px}
-.tile{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--card);border:1px solid #ffffff0d}
-.tile img{width:100%;height:auto;transition:transform .5s}
-.tile:hover img{transform:scale(1.04)}
-.tile figcaption{position:absolute;inset:auto 0 0 0;padding:30px 14px 12px;background:linear-gradient(transparent,#000d);font-size:14px;font-weight:600;opacity:0;transform:translateY(8px);transition:.3s}
-.tile figcaption span{display:block;font-weight:400;color:#c7cad6;font-size:12px}
-.tile:hover figcaption,.tile:focus figcaption{opacity:1;transform:none}
-@media (hover:none){.tile figcaption{opacity:1;transform:none}}
-/* featured song */
-.feature{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,#1a1320,#10131c);border:1px solid #ffb34733;border-radius:24px;padding:28px;margin-bottom:46px;box-shadow:0 0 80px #ffb34712}
-.feature img{border-radius:16px;width:100%;aspect-ratio:1;object-fit:cover}
-.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1a1000;background:var(--amber);padding:5px 10px;border-radius:6px}
-.feature h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,56px);line-height:1;margin:14px 0 4px}
-.feature .jp{font-size:22px;color:var(--amber)}
-.feature p{color:#cfd3de}
-.charity{border-left:3px solid var(--amber);background:#ffb3470d;padding:14px 16px;border-radius:0 12px 12px 0;margin:18px 0;font-size:15px}
-.charity a{color:var(--amber)}
-/* song grid */
-.songs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:.25s}
-.song:hover{transform:translateY(-4px);border-color:#e5383b88;box-shadow:0 20px 40px #0008}
-.song .art{position:relative;aspect-ratio:1;overflow:hidden}
-.song .art img{width:100%;height:100%;object-fit:cover}
-.song .play{position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 6px 20px #e5383b88;opacity:0;transform:scale(.8);transition:.25s}
-.song:hover .play{opacity:1;transform:none}
-.song .meta{padding:14px 16px 16px}
-.song h4{margin:0 0 4px;font-size:16px}
-.song p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tags i{font-style:normal;font-size:11px;color:#c9cde0;border:1px solid var(--line);padding:2px 8px;border-radius:99px}
-.tags i.jpt{border-color:#e5383b66;color:#ffb3b4}
-.more{text-align:center;margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.song.hide{display:none}
-.song .art img{background:#1a1d27}
-.tags i.x{border-color:#ffb34766;color:#ffd59a}
-.count{color:var(--muted);font-size:14px;margin:-12px 0 18px}
-.workflow{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-/* videos */
-.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.vcard video{width:100%;aspect-ratio:16/9;display:block;background:#000;object-fit:cover}
-.vcard .meta{padding:14px 16px}
-.vcard h4{margin:0;font-size:16px}.vcard p{margin:4px 0 0;color:var(--muted);font-size:13px}
-.vcard .meta a{color:var(--cyan);font-size:13px;text-decoration:none}
-h3.sub{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;letter-spacing:1px;margin:60px 0 6px}
-.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.boards .tile{margin:0}
-.boards .tile img{aspect-ratio:16/9;object-fit:cover}
-.boards .wide{grid-column:span 2}
-.boards .wide img{aspect-ratio:3/2}
-/* about */
-.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px;align-items:center}
-.about img{border-radius:20px;border:1px solid #ffffff14;box-shadow:0 30px 60px #000a}
-.about p{color:#d1d4de;font-size:17px}
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.skill b{display:block;font-size:14px}.skill span{color:var(--muted);font-size:13px}
-/* contact */
-.contact{text-align:center}
-.socials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
-.social{display:flex;flex-direction:column;align-items:center;gap:10px;padding:30px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-decoration:none;transition:.25s}
-.social:hover{transform:translateY(-4px);border-color:var(--red)}
-.social svg{width:36px;height:36px}
-.social b{font-size:18px}.social span{color:var(--muted);font-size:14px}
-footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-size:13px;text-align:center}
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
-.lb.open{display:flex}
-.lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
-.lb img{max-width:92vw;max-height:82vh;border-radius:10px;box-shadow:0 20px 60px #000}
-.lb figcaption{margin-top:12px;text-align:center;font-weight:600}
-.lb figcaption span{display:block;color:var(--muted);font-weight:400;font-size:13px}
-.lb button{position:absolute;background:#ffffff14;border:1px solid #ffffff22;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
-.lb .x{top:18px;right:18px}.lb .prev{left:18px;top:50%}.lb .next{right:18px;top:50%}
-.lb button:hover{background:var(--red)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.reveal.in{opacity:1;transform:none}
-@media (max-width:900px){
- .hero .wrap{grid-template-columns:1fr}.collage{height:440px}.collage-in{inset:-40px -30px;gap:10px}.col{gap:10px}
- .feature{grid-template-columns:1fr;padding:18px}
- .about{grid-template-columns:minmax(0,1fr)}.about img{max-width:min(420px,100%);margin:0 auto}
- .boards .wide{grid-column:auto}
-}
-@media (max-width:720px){
- .links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:#07080cf5;border-bottom:1px solid var(--line)}
- .links.open{display:flex}.links a{padding:14px 6vw;font-size:16px}
- .burger{display:block}
- section{padding:64px 0}
- .masonry{columns:2 150px;column-gap:10px}.tile{margin-bottom:10px}
- .videos{grid-template-columns:1fr}
- .songs{grid-template-columns:repeat(2,1fr);gap:12px}
- .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
- .socials{grid-template-columns:1fr}
- .skills{grid-template-columns:1fr}
- .stats{gap:22px}.stat b{font-size:32px}
- .collage{height:400px;border-radius:20px}.col a{border-radius:10px}
- .hero{padding:96px 0 40px;min-height:0}.hero .wrap{gap:28px}
- .stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:10px;margin-top:26px}.stat b{font-size:28px}.stat span{font-size:11px;display:block;line-height:1.3}
- .lb .prev,.lb .next{top:auto;bottom:18px}
-}
-
-/* videos page */
-.page-head{padding:130px 0 30px}
-.page-head .lead{max-width:640px;margin-top:14px}
-.back{display:inline-block;margin-bottom:18px;color:var(--muted);text-decoration:none;font-size:14px}.back:hover{color:var(--text)}
-.mvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px;padding-bottom:90px}
-.mv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
-.mv:hover{border-color:#e5383b88;box-shadow:0 18px 40px #000a}
-.mv[data-pending]{display:none!important}
-.mv .frame{position:relative;background:#000}
-.mv video{width:100%;aspect-ratio:16/9;display:block;background:#000;object-fit:cover}
-.mv .dur{position:absolute;right:10px;top:10px;font-size:12px;font-weight:600;background:#07080ccc;border:1px solid #ffffff22;padding:3px 8px;border-radius:99px;pointer-events:none}
-.mv .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
-.mv h3{margin:0;font-size:19px;line-height:1.3}
-.mv .sub{margin:0;color:#c9a3a4;font-size:14px}
-.mv p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
-.mv .tags{margin-top:8px}
-.mv .mvlinks{margin-top:auto;padding-top:12px;display:flex;gap:14px;flex-wrap:wrap}
-.mv .mvlinks a{color:var(--cyan);font-size:13px;text-decoration:none;font-weight:500}.mv .mvlinks a:hover{text-decoration:underline}
-.mv .credit{font-size:11px;color:#7d8397;margin-top:8px;font-family:"Noto Sans JP",sans-serif}
-.nav-on{color:var(--text)!important}
-.more-videos{border-top:1px solid var(--line);padding-top:56px}
-.more-videos .more-head{margin-bottom:26px}
-.more-videos .mvgrid{padding-bottom:90px}
-@media (max-width:720px){.mvgrid{grid-template-columns:1fr;gap:18px}.page-head{padding:96px 0 20px}}
-</style>
+<title>Videos · Paper Crane Studio</title>
+<meta name="description" content="Videos by Kyle Ramirez: storyboarded, generated scene by scene, timed to the vocals, and subtitled in Japanese and English.">
+<meta property="og:title" content="Videos · Paper Crane Studio">
+<meta property="og:description" content="Videos from Paper Crane Studio, in Japanese and English.">
+<meta property="og:image" content="https://hellabayarea.github.io/portfolio/assets/hero/akari_hero.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/studio.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-<nav><div class="wrap">
- <a class="logo" href="index.html#top">KYLE<span>.</span>RAMIREZ</a>
- <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
- <div class="links" onclick="this.classList.remove('open')">
-  <a href="index.html#art">AI Art</a><a href="index.html#music">Music</a><a href="index.html#videos">Storyboards</a><a href="music-videos.html" class="nav-on">Videos</a><a href="index.html#akari">Akari</a><a href="akari/stories/">Stories</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
- </div>
-</div></nav>
+<a class="skip" href="#content">Skip to content</a>
+<div class="nav">
+  <div class="nav-bar">
+    <a class="logo" href="index.html#top">Paper Crane Studio</a>
+    <input class="nav-check" type="checkbox" id="nav-check" aria-controls="nav-menu">
+    <label class="nav-toggle" for="nav-check"><span class="when-closed">Menu</span><span class="when-open">Close</span></label>
+    <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+      <details class="nav-item">
+        <summary>Akari</summary>
+        <div class="nav-sub">
+          <a href="index.html#her-looks">Her looks</a>
+          <a href="akari/stories/">Stories</a>
+          <a href="index.html#akari-video">Video</a>
+        </div>
+      </details>
+      <details class="nav-item">
+        <summary>Music</summary>
+        <div class="nav-sub">
+          <a href="index.html#music">Songs</a>
+          <a href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer">Spotify <span aria-hidden="true">↗</span></a>
+          <a href="https://suno.com/@detnorske" target="_blank" rel="noopener noreferrer">Suno <span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
+      <details class="nav-item align-end">
+        <summary>Videos</summary>
+        <div class="nav-sub">
+          <a href="index.html#videos">Teasers</a>
+          <a href="music-videos.html" aria-current="page">All videos</a>
+        </div>
+      </details>
+      <a class="nav-link" href="index.html#art">Art</a>
+      <details class="nav-item align-end">
+        <summary>About</summary>
+        <div class="nav-sub">
+          <a href="index.html#journey">Journey</a>
+          <a href="index.html#contact">Connect</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</div>
 
-<header class="page-head"><div class="wrap">
- <a class="back" href="index.html#videos">← Back to the portfolio</a>
- <h2><small class="jp">ビデオ</small>Videos</h2>
- <p class="lead">Full-length AI videos, each one storyboarded, generated scene by scene, timed to the vocals, and subtitled. Press play to watch in place, with sound. <span id="mv-count">19 videos</span>.</p>
-</div></header>
-
-<main class="wrap mvgrid" id="mvgrid">
+<main class="page" id="content">
+  <header class="page-head">
+    <p class="kicker" lang="ja">ビデオ</p>
+    <h1>Videos</h1>
+    <p class="lead">Full-length videos, each one storyboarded, generated scene by scene, timed to the vocals, and subtitled. Press play to watch in place, with sound. <span id="mv-count">19 videos</span>.</p>
+  </header>
+<div class="mvgrid" id="mvgrid">
   <article class="mv reveal" id="days-we-still-have">
    <div class="frame"><video controls playsinline preload="none" data-poster="assets/mv/days-we-still-have.jpg" src="assets/mv/days-we-still-have.mp4" aria-label="The Days We Still Have video"></video><span class="dur">5:27</span></div>
    <div class="body"><h3>The Days We Still Have</h3><p class="jp sub">まだ残された日々</p><p>Japanese symphonic-metal anime video: a child, a father, a breast-cancer survivor, a teen athlete, and an elderly couple facing illness and finding hope together.</p>
@@ -327,10 +175,11 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
    <div class="mvlinks"></div>
    <p class="credit">VOICEVOX:玄野武宏 / 青山龍星 / 春日部つむぎ / No.7</p></div>
   </article>
-</main>
+</div>
 
-<section class="wrap more-videos" id="more-videos">
- <div class="more-head"><h2><small class="jp">その他</small>More Videos</h2></div>
+<section class="more-videos" id="more-videos">
+ <p class="kicker" lang="ja">その他</p>
+ <h2>More videos</h2>
  <div class="mvgrid">
   <article class="mv reveal" id="thousand-paper-cranes">
    <div class="frame"><video controls playsinline preload="none" data-poster="assets/mv/thousand-paper-cranes.jpg" src="assets/mv/thousand-paper-cranes.mp4" aria-label="A Thousand Paper Cranes video"></video><span class="dur">6:25</span></div>
@@ -341,17 +190,9 @@ footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-siz
  </div>
 </section>
 
-<footer>© 2026 Kyle Ramirez. All videos, songs, and artwork created by Kyle Ramirez with AI tools. Tamiya Delivery voices: VOICEVOX:玄野武宏 / 青山龍星 / 春日部つむぎ / No.7.</footer>
-<script>
-// lazy posters: set the poster only when a card is near the viewport
-const pio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const v=en.target;v.poster=v.dataset.poster;pio.unobserve(v)}}),{rootMargin:'400px 0px'});
-document.querySelectorAll('video[data-poster]').forEach(v=>pio.observe(v));
-// only one video plays at a time
-document.addEventListener('play',e=>{document.querySelectorAll('video').forEach(v=>{if(v!==e.target)v.pause()})},true);
-// reveal
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-document.getElementById('mv-count').textContent=document.querySelectorAll('.mv:not([data-pending])').length+' videos';
-</script>
+
+</main>
+<footer class="site-footer">Paper Crane Studio · © 2026 Kyle Ramirez. Videos, songs, and artwork created with AI tools. Tamiya Delivery voices: VOICEVOX:玄野武宏 / 青山龍星 / 春日部つむぎ / No.7.</footer>
+<script src="assets/js/site.js"></script>
 </body>
 </html>

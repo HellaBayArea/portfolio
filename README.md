@@ -1,12 +1,21 @@
-# Kyle's AI Art & Music Portfolio
+# Paper Crane Studio
 
-A portfolio of my AI art, music (Suno), and short videos.
+Portfolio of Kyle Ramirez: Akari (明里), music, videos, and art. Static site served with GitHub Pages (`index.html` + `assets/`).
 
 - X: https://x.com/HellaBayArea
+- YouTube: https://www.youtube.com/@hellabayarea
 - TikTok: https://www.tiktok.com/@hellabayarea88
 - Suno: https://suno.com/@detnorske
+- Spotify: https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA
 
-Static site served with GitHub Pages (`index.html` + `assets/`).
+## Hero video
+
+The homepage hero has one swap point. Replace these two files and leave the paths in `index.html` as they are:
+
+- `assets/hero/akari_hero.mp4` — looping, muted, autoplaying, playsinline background
+- `assets/hero/akari_hero.jpg` — poster if the video cannot play, and the still shown when reduced motion pauses playback
+
+The final hero video is not in the repo yet. Those files are a placeholder made from `assets/akari/akari-avatar.jpg`: freckles, a brown eye on the left of the frame, and a vivid electric cyan eye on the right. The holographic labels and leader lines are HTML and SVG over the picture, not burned into the video.
 
 ## Akari daily stories
 
