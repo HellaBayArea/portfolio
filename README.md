@@ -1,3 +1,20 @@
+# Paper Crane Studio
+
+Portfolio of Kyle Ramirez: Akari, metal videos, music, and art.
+
+Static site for GitHub Pages. The homepage is the Akari hero, a short Featured Work strip, and Connect. Music, Videos, Art, Akari, and About are separate pages.
+
+## Hero video
+
+The homepage reads two files. Replace them when the final Akari hero is ready. Do not change the paths in `index.html`.
+
+- `assets/hero/akari_hero.mp4` — looping, muted hero video
+- `assets/hero/akari_hero.jpg` — poster, and the still used when reduced motion pauses the video
+
+The placeholder is a cropped still of the Entry 1 sunrise portrait: brown eye on the left of the image, electric cyan eye on the right, freckles visible. `assets/video/akari-teaser.mp4` is a wide title sequence, so it plays on the Videos page instead of filling the hero.
+
+---
+
 # Kyle's AI Art & Music Portfolio
 
 A portfolio of my AI art, music (Suno), and short videos.
@@ -10,7 +27,7 @@ Static site served with GitHub Pages (`index.html` + `assets/`).
 
 ## Akari daily stories
 
-The journal lives at [hellabayarea.github.io/portfolio/akari/stories/](https://hellabayarea.github.io/portfolio/akari/stories/). Entry N is `akari/stories/N/`. The homepage section is `#akari`.
+The journal lives at [hellabayarea.github.io/portfolio/akari/stories/](https://hellabayarea.github.io/portfolio/akari/stories/). Entry N is `akari/stories/N/`. The latest entry is shown on the Akari page, inside the `akari-stories` markers in `akari/index.html`. That page shows entry numbers only. It does not show dates or a comments section.
 
 Stories are website-only. This repo does not post to X. Pages do not collect comments or other visitor input. Entry numbers are visible; calendar dates are not.
 
@@ -60,7 +77,7 @@ python3 scripts/akari_publish.py --inbox /absolute/path/to/private/inbox
 python3 scripts/akari_publish.py --inbox /absolute/path/to/private/inbox --apply --expect 3
 ```
 
-The first command is a dry run. `--apply` writes only the next entry: its page, the original JPEG, the archive, the catalog, and the marked block in `index.html`. Review the diff, commit those files, and open a PR. The live site updates when that PR is merged. Merging is manual.
+The first command is a dry run. `--apply` writes only the next entry: its page, the original JPEG, the archive, the catalog, and the marked block in `akari/index.html`. Review the diff, commit those files, and open a PR. The live site updates when that PR is merged. Merging is manual.
 
 If the inbox has no ready entry, the script stops. It does not invent a story, repeat one, or skip a number. Publishing the same bytes again is a no-op. A different file for an existing number is refused.
 

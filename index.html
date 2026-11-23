@@ -3,612 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kyle Ramirez · AI Art & Music</title>
-<meta name="description" content="Portfolio of Kyle Ramirez, a Bay Area AI artist and songwriter: horror-movie tribute art, Munchkin comics, bilingual Japanese/English songs, and AI videos.">
-<meta property="og:title" content="Kyle Ramirez · AI Art & Music">
-<meta property="og:description" content="AI art, bilingual songs, and videos from the Bay Area.">
-<meta property="og:image" content="assets/img/alien.webp">
-<meta name="theme-color" content="#07080c">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#07080c;--bg2:#0d0f16;--card:#12151e;--line:#222736;--text:#eef0f6;--muted:#9aa1b4;--red:#e5383b;--amber:#ffb347;--cyan:#4cc9f0;--radius:16px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans JP",system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}img{max-width:100%;display:block}
-.wrap{width:min(1200px,92vw);margin:0 auto}
-.jp{font-family:"Noto Sans JP",Inter,sans-serif}
-/* nav */
-nav{position:fixed;inset:0 0 auto 0;z-index:50;background:linear-gradient(#07080cee,#07080c99);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff10}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:26px;letter-spacing:2px;text-decoration:none}
-.logo span{color:var(--red)}
-.links{display:flex;gap:22px;flex-wrap:wrap}
-.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:.2s}
-.links a:hover{color:var(--text)}
-.burger{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
-/* hero */
-.hero{position:relative;min-height:min(100vh,920px);display:flex;align-items:center;overflow:hidden;padding:110px 0 70px}
-.soon+.hero{padding-top:60px}
-.hero-bg{position:absolute;inset:0;background:url(assets/poster/beyond-the-stars.webp) center/cover;opacity:.38;transform:scale(1.05);filter:saturate(1.1)}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,transparent 0,#07080c 75%),linear-gradient(transparent 60%,var(--bg))}
-.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.eyebrow{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);border:1px solid #ffb34755;padding:6px 12px;border-radius:99px}
-h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(64px,10vw,140px);line-height:.88;margin:18px 0 6px;letter-spacing:2px}
-h1 .accent{color:var(--red);text-shadow:0 0 40px #e5383b66}
-.jpname{color:var(--muted);font-size:18px;letter-spacing:6px;margin-bottom:18px}
-.tagline{font-size:clamp(17px,2vw,21px);color:#d6d9e3;max-width:560px}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:#ffffff08;transition:.2s}
-.btn:hover{background:#ffffff14;transform:translateY(-1px)}
-.btn.primary{background:var(--red);border-color:var(--red)}
-.btn.primary:hover{background:#ff4b4e}
-.stats{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
-.stat b{display:block;font-family:"Bebas Neue",sans-serif;font-size:40px;font-weight:400;line-height:1}
-.stat span{color:var(--muted);font-size:13px}
-/* hero collage */
-.collage{position:relative;height:600px;overflow:hidden;border-radius:26px;
- -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
-.collage-in{position:absolute;inset:-60px -40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;transform:rotate(-6deg)}
-.col{display:flex;flex-direction:column;gap:14px;animation:up 60s linear infinite;will-change:transform}
-.col.c2{animation-name:down;animation-duration:72s}.col.c3{animation-duration:66s}
-.collage:hover .col{animation-play-state:paused}
-.col a{display:block;border-radius:14px;overflow:hidden;position:relative;box-shadow:0 18px 40px #000b,0 0 0 1px #ffffff1a;transition:transform .35s,box-shadow .35s;background:var(--card)}
-.col a:hover{transform:scale(1.04);box-shadow:0 24px 50px #000d,0 0 0 2px var(--red);z-index:2}
-.col img{width:100%;height:auto;filter:saturate(1.05) contrast(1.03)}
-.col a::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#07080c66)}
-@keyframes up{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 7px))}}
-@keyframes down{from{transform:translateY(calc(-50% - 7px))}to{transform:translateY(0)}}
-.collage-glow{position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,#e5383b33,transparent 70%);pointer-events:none;z-index:-1}
-.collage-wrap{position:relative}
-.collage-tag{position:absolute;left:18px;bottom:18px;z-index:3;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:#07080ccc;border:1px solid #ffffff22;padding:7px 12px;border-radius:99px;backdrop-filter:blur(6px);text-decoration:none;color:#fff}
-.collage-tag:hover{border-color:var(--red)}
-@media (prefers-reduced-motion:reduce){.col{animation:none}}
-/* sections */
-section{padding:90px 0;position:relative}
-.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
-h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(44px,6vw,72px);line-height:.95;margin:0;letter-spacing:1.5px}
-h2 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;letter-spacing:4px;color:var(--red);margin-bottom:8px}
-.lead{color:var(--muted);max-width:520px;margin:0}
-.alt{background:var(--bg2);border-top:1px solid #ffffff08;border-bottom:1px solid #ffffff08}
-/* filters */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:99px;font:500 14px Inter,sans-serif;cursor:pointer;transition:.2s}
-.filters button.on,.filters button:hover{color:#fff;border-color:var(--red);background:#e5383b22}
-/* gallery masonry */
-.masonry{columns:5 190px;column-gap:12px}
-.masonry .tile{margin-bottom:12px}
-.art-more{display:flex;justify-content:center;margin-top:22px}
-.tile{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--card);border:1px solid #ffffff0d}
-.tile img{width:100%;height:auto;transition:transform .5s}
-.tile:hover img{transform:scale(1.04)}
-.tile figcaption{position:absolute;inset:auto 0 0 0;padding:30px 14px 12px;background:linear-gradient(transparent,#000d);font-size:14px;font-weight:600;opacity:0;transform:translateY(8px);transition:.3s}
-.tile figcaption span{display:block;font-weight:400;color:#c7cad6;font-size:12px}
-.tile:hover figcaption,.tile:focus figcaption{opacity:1;transform:none}
-@media (hover:none){.tile figcaption{opacity:1;transform:none}}
-/* featured song */
-.feature{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,#1a1320,#10131c);border:1px solid #ffb34733;border-radius:24px;padding:28px;margin-bottom:46px;box-shadow:0 0 80px #ffb34712}
-.feature img{border-radius:16px;width:100%;aspect-ratio:1;object-fit:cover}
-.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1a1000;background:var(--amber);padding:5px 10px;border-radius:6px}
-.feature h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(38px,4.5vw,56px);line-height:1;margin:14px 0 4px}
-.feature .jp{font-size:22px;color:var(--amber)}
-.feature p{color:#cfd3de}
-.charity{border-left:3px solid var(--amber);background:#ffb3470d;padding:14px 16px;border-radius:0 12px 12px 0;margin:18px 0;font-size:15px}
-.charity a{color:var(--amber)}
-/* song grid */
-.songs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-.song{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:.25s}
-.song:hover{transform:translateY(-4px);border-color:#e5383b88;box-shadow:0 20px 40px #0008}
-.song .art{position:relative;aspect-ratio:1;overflow:hidden}
-.song .art img{width:100%;height:100%;object-fit:cover}
-.song .play{position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 6px 20px #e5383b88;opacity:0;transform:scale(.8);transition:.25s}
-.song:hover .play{opacity:1;transform:none}
-.song .meta{padding:14px 16px 16px}
-.song h4{margin:0 0 4px;font-size:16px}
-.song p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tags i{font-style:normal;font-size:11px;color:#c9cde0;border:1px solid var(--line);padding:2px 8px;border-radius:99px}
-.tags i.jpt{border-color:#e5383b66;color:#ffb3b4}
-.more{text-align:center;margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.song.hide{display:none}
-.song .art img{background:#1a1d27}
-.tags i.x{border-color:#ffb34766;color:#ffd59a}
-.count{color:var(--muted);font-size:14px;margin:-12px 0 18px}
-.workflow{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-/* videos */
-.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.vcard video{width:100%;aspect-ratio:16/9;display:block;background:#000;object-fit:cover}
-.vcard .meta{padding:14px 16px}
-.vcard h4{margin:0;font-size:16px}.vcard p{margin:4px 0 0;color:var(--muted);font-size:13px}
-.vcard .meta a{color:var(--cyan);font-size:13px;text-decoration:none}
-h3.sub{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:34px;letter-spacing:1px;margin:60px 0 6px}
-.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.boards .tile{margin:0}
-.boards .tile img{aspect-ratio:16/9;object-fit:cover}
-.boards .wide{grid-column:span 2}
-.boards .wide img{aspect-ratio:3/2}
-/* about */
-.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px;align-items:center}
-.about img{border-radius:20px;border:1px solid #ffffff14;box-shadow:0 30px 60px #000a}
-.about p{color:#d1d4de;font-size:17px}
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.skill b{display:block;font-size:14px}.skill span{color:var(--muted);font-size:13px}
-/* contact */
-.contact{text-align:center}
-.socials{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:34px}
-.social{display:flex;flex-direction:column;align-items:center;gap:10px;padding:30px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;text-decoration:none;transition:.25s}
-.social:hover{transform:translateY(-4px);border-color:var(--red)}
-.social svg{width:36px;height:36px}
-.social b{font-size:18px}.social span{color:var(--muted);font-size:14px}
-footer{padding:40px 0;border-top:1px solid #ffffff0d;color:var(--muted);font-size:13px;text-align:center}
-/* coming soon banner */
-.soon{padding:84px 0 0;background:radial-gradient(ellipse at 80% 0,#4cc9f01f,transparent 60%),radial-gradient(ellipse at 10% 100%,#ff5fa21a,transparent 60%)}
-.soon-in{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:32px;align-items:center;background:linear-gradient(135deg,#141024,#0d1220);border:1px solid #4cc9f033;border-radius:24px;padding:24px;box-shadow:0 0 80px #4cc9f012}
-.soon .eyebrow{color:var(--cyan);border-color:#4cc9f055}
-.soon h2{margin:14px 0 6px}.soon h2 .jp{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:.6em;color:var(--cyan);letter-spacing:4px;margin-left:8px;text-shadow:0 0 24px #4cc9f088}
-.soon p{color:#cfd3de;margin:0 0 18px}
-.soon video{width:100%;aspect-ratio:16/9;display:block;background:#000;border-radius:16px;border:1px solid #ffffff14;box-shadow:0 20px 50px #000a}
-/* akari */
-.akari{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
-.akari-lead img{border-radius:20px;border:1px solid #4cc9f033;box-shadow:0 30px 60px #000a,0 0 60px #4cc9f01a;width:100%;aspect-ratio:1;object-fit:cover}
-.akari .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}
-.akari .styles{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 24px}
-.akari .styles i{font-style:normal;font-size:13px;color:#d6f3fc;border:1px solid #4cc9f055;background:#4cc9f00f;padding:5px 12px;border-radius:99px}
-.akari p{color:#d1d4de}
-.akari-video video{width:100%;aspect-ratio:16/9;display:block;background:#000;border-radius:16px;border:1px solid #4cc9f033;box-shadow:0 20px 50px #000a}
-.akari-sheets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.akari-sheets .tile:last-child:nth-child(odd){grid-column:1/-1}.akari-sheets .tile:last-child:nth-child(odd) img{aspect-ratio:16/7}
-.akari-sheets .tile{margin:0}.akari-sheets .tile img{aspect-ratio:3/2;object-fit:cover}
-.akari-journal h3.sub{margin:36px 0 8px;font-size:28px}
-.akari-journal p{color:#d1d4de}
-.akari-empty{border:1px dashed #4cc9f055;border-radius:18px;padding:18px 20px;background:#4cc9f00c}
-.akari-empty p{margin:0 0 10px}.akari-empty p:last-child{margin:0}
-.akari-latest{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:18px;align-items:center;background:#0d1220;border:1px solid #4cc9f033;border-radius:18px;padding:14px}
-.akari-latest img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#07080c;border-radius:12px}
-.akari-latest h4{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:32px;letter-spacing:1px;margin:0 0 8px}
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:4vh 4vw}
-.lb.open{display:flex}
-.lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center}
-.lb img{max-width:92vw;max-height:82vh;border-radius:10px;box-shadow:0 20px 60px #000}
-.lb figcaption{margin-top:12px;text-align:center;font-weight:600}
-.lb figcaption span{display:block;color:var(--muted);font-weight:400;font-size:13px}
-.lb button{position:absolute;background:#ffffff14;border:1px solid #ffffff22;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
-.lb .x{top:18px;right:18px}.lb .prev{left:18px;top:50%}.lb .next{right:18px;top:50%}
-.lb button:hover{background:var(--red)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.reveal.in{opacity:1;transform:none}
-@media (max-width:900px){
- .hero .wrap{grid-template-columns:1fr}.collage{height:440px}.collage-in{inset:-40px -30px;gap:10px}.col{gap:10px}
- .feature{grid-template-columns:1fr;padding:18px}
- .about{grid-template-columns:minmax(0,1fr)}.about img{max-width:min(420px,100%);margin:0 auto}
- .boards .wide{grid-column:auto}
- .soon-in{grid-template-columns:minmax(0,1fr);padding:18px}.soon-in>div:first-child{order:2}
- .akari{grid-template-columns:minmax(0,1fr)}.akari-lead img{max-width:min(420px,100%);margin:0 auto}
- .akari-latest{grid-template-columns:1fr}
- .socials{display:flex;flex-wrap:wrap;justify-content:center}.social{flex:0 1 calc(50% - 9px)}
-}
-@media (max-width:720px){
- .links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:#07080cf5;border-bottom:1px solid var(--line)}
- .links.open{display:flex}.links a{padding:14px 6vw;font-size:16px}
- .burger{display:block}
- section{padding:64px 0}
- .masonry{columns:2 150px;column-gap:10px}.masonry .tile{margin-bottom:10px}
- .videos{grid-template-columns:1fr}
- .songs{grid-template-columns:repeat(2,1fr);gap:12px}
- .song .meta{padding:10px 12px 12px}.song h4{font-size:14px}.song p{display:none}
- .socials{grid-template-columns:1fr}.social{flex-basis:100%}
- .skills{grid-template-columns:1fr}
- .soon{padding-top:76px}.akari-sheets{grid-template-columns:minmax(0,1fr)}
- .stats{gap:22px}.stat b{font-size:32px}
- .collage{height:400px;border-radius:20px}.col a{border-radius:10px}
- .hero{padding:96px 0 40px;min-height:0}.hero .wrap{gap:28px}
- .stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:10px;margin-top:26px}.stat b{font-size:28px}.stat span{font-size:11px;display:block;line-height:1.3}
- .lb .prev,.lb .next{top:auto;bottom:18px}
-}
-</style>
+<title>Paper Crane Studio</title>
+<meta name="description" content="Paper Crane Studio. Akari, metal videos, music, and art by Kyle Ramirez.">
+<meta property="og:title" content="Paper Crane Studio">
+<meta property="og:description" content="Akari, metal videos, music, and art by Kyle Ramirez.">
+<meta property="og:image" content="https://hellabayarea.github.io/portfolio/assets/hero/akari_hero.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 20 L15 13 L10 5 L16 12 L28 7 L21 15 L30 19 L18 18 L23 28 L15 19 L7 27 Z' fill='none' stroke='%23d7f6ff' stroke-width='1.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Outfit:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="preload" as="image" href="assets/hero/akari_hero.jpg">
+<!--
+  HERO SWAP. The hero reads these two files only. Replace the files. Do not change the paths.
+  Video:  assets/hero/akari_hero.mp4
+  Poster: assets/hero/akari_hero.jpg
+  Placeholder: Entry 1 sunrise portrait. Brown eye on the image left, electric cyan eye on the image right, freckles visible.
+  assets/video/akari-teaser.mp4 is a wide title sequence, so it plays on the Videos page instead of the hero.
+-->
 </head>
-<body>
-<nav><div class="wrap">
- <a class="logo" href="#top">KYLE<span>.</span>RAMIREZ</a>
- <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
- <div class="links" onclick="this.classList.remove('open')">
-  <a href="#art">AI Art</a><a href="#music">Music</a><a href="#videos">Storyboards</a><a href="music-videos.html">Videos</a><a href="#akari">Akari</a><a href="akari/stories/">Stories</a><a href="#about">About</a><a href="#contact">Contact</a>
- </div>
-</div></nav>
-
-<section class="soon" id="coming-soon" aria-label="Coming soon: Akari">
- <div class="wrap soon-in">
-  <div>
-   <span class="eyebrow">Coming Soon</span>
-   <h2>Akari<span class="jp">明里</span></h2>
-   <p>Kyle's original character, a Japanese-American heroine with one cybernetic blue eye. Watch the first teaser trailer.</p>
-   <a class="btn" href="#akari">Meet Akari →</a>
-  </div>
-  <video controls preload="metadata" playsinline poster="assets/poster/akari-teaser.jpg" src="assets/video/akari-teaser.mp4" aria-label="Akari 明里 teaser trailer"></video>
- </div>
-</section>
-
-<header class="hero" id="top">
- <div class="hero-bg"></div>
- <div class="wrap">
-  <div>
-   <span class="eyebrow">AI Artist · Songwriter · Bay Area</span>
-   <h1>Kyle<br><span class="accent">Ramirez</span></h1>
-   <div class="jpname jp">カイル・ラミレス</div>
-   <p class="tagline">Cinematic AI art, horror-movie tributes, and bilingual Japanese / English songs, built with AI tools from prompt to poster to video.</p>
-   <div class="cta">
-    <a class="btn primary" href="#art">View the art</a>
-    <a class="btn" href="#music">▶ Listen</a>
-   </div>
-   <div class="stats">
-    <div class="stat"><b>100</b><span>songs on Suno</span></div>
-    <div class="stat"><b>20K+</b><span>plays</span></div>
-    <div class="stat"><b>12+</b><span>AI videos</span></div>
-    <div class="stat"><b class="jp" style="font-family:'Noto Sans JP'">日本語</b><span>&amp; English lyrics</span></div>
-   </div>
-  </div>
-  <div class="collage-wrap">
-   <div class="collage" id="collage" aria-label="A mix of Kyle's AI artwork"><div class="collage-in" id="collage-in"></div></div>
-   <div class="collage-glow"></div>
-   <a class="collage-tag" href="#art">◆ Browse the full gallery</a>
-  </div>
- </div>
+<body data-root="">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 20 L15 13 L10 5 L16 12 L28 7 L21 15 L30 19 L18 18 L23 28 L15 19 L7 27 Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    Paper Crane Studio
+  </a>
+  <input class="nav-check" type="checkbox" id="nav-check">
+  <label class="nav-toggle" for="nav-check"><span class="sr">Menu</span><span class="burger" aria-hidden="true"></span></label>
+  <nav class="nav-links" aria-label="Primary">
+    <details class="drop">
+      <summary>Work</summary>
+      <div class="menu">
+        <a href="music.html">Music</a>
+        <a href="music-videos.html">Videos</a>
+        <a href="art.html">Art</a>
+      </div>
+    </details>
+    <details class="drop">
+      <summary>Akari</summary>
+      <div class="menu">
+        <a href="akari/">Her looks</a>
+        <a href="akari/stories/">Stories</a>
+      </div>
+    </details>
+    <details class="drop">
+      <summary>About</summary>
+      <div class="menu">
+        <a href="about.html">Journey</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </details>
+  </nav>
 </header>
 
-<section id="art">
- <div class="wrap">
-  <div class="sec-head reveal">
-   <h2><small class="jp">AIアート</small>AI Art Gallery</h2>
-   <p class="lead">Horror classics reimagined with Munchkin the tuxedo cat, the Breakfast Around the World manga comics, daily calendar posts, character design, and cover art. Tap any piece to view it full size.</p>
-  </div>
-  <div class="filters" id="filters"></div>
-  <div class="masonry" id="gallery"></div>
-  <div class="art-more"><button class="btn" id="art-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button></div>
- </div>
-</section>
-
-<section id="music" class="alt">
- <div class="wrap">
-  <div class="sec-head reveal">
-   <h2><small class="jp">音楽</small>Music</h2>
-   <p class="lead">From techno-hardstyle concept albums to metalcore, music-box horror waltzes, and Japanese ballads. Every track was written and produced with Suno.</p>
-  </div>
-
-  <article class="feature reveal">
-   <img src="assets/covers/different-light.webp" alt="A Different Kind of Light cover art" loading="lazy">
-   <div>
-    <span class="badge">Featured · Charity single</span>
-    <h3>A Different Kind of Light</h3>
-    <div class="jp">違う光</div>
-    <p>A melodic metalcore anthem sung in Japanese, written for children with disabilities. It is about the kids who are handed one narrow path and find their own rhythm, their own entrance, and their own light.</p>
-    <div class="charity">💛 <b>Charity pledge:</b> Kyle is donating $1 for every like from a verified account on <a href="https://x.com/HellaBayArea/status/2114258221347287448" target="_blank" rel="noopener">his X post</a>, up to $100, to <a href="https://unleashpotential.jp" target="_blank" rel="noopener">Unleash Potential</a> in Japan by the end of 2026.</div>
-    <div class="cta">
-     <a class="btn primary" href="https://suno.com/song/025d9200-f3dc-4bb0-976a-91af5b84df49" target="_blank" rel="noopener">▶ Listen on Suno</a>
-     <a class="btn" href="#videos">Watch the video teaser</a>
+<main id="content">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy wrap">
+      <h1 id="hero-title">Akari</h1>
+      <p class="hero-jp" lang="ja">明里</p>
+      <p class="hero-line">She calls Kyle her creator.</p>
     </div>
-   </div>
-  </article>
-
-  <div class="filters" id="song-filters"></div>
-  <p class="count" id="song-count"></p>
-  <div class="songs" id="songs"></div>
-  <div class="more"><button class="btn" id="song-more" style="cursor:pointer;color:inherit;font:inherit;font-weight:600">Show all</button><a class="btn" href="https://suno.com/@detnorske" target="_blank" rel="noopener">Hear all 100 songs on Suno →</a><a class="btn" href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer">Listen on Spotify →</a></div>
- </div>
-</section>
-
-<section id="videos">
- <div class="wrap">
-  <div class="sec-head reveal">
-   <h2><small class="jp">映像</small>Videos &amp; Storyboards</h2>
-   <p class="lead">Full AI videos: storyboarded, generated scene by scene, timed to the vocals, and subtitled. These are short teasers; press play for sound.</p>
-  </div>
-  <div class="videos" id="videos-grid"></div>
-  <div class="more"><a class="btn primary" href="music-videos.html">▶ Watch the full videos</a></div>
-  <h3 class="sub">AI Workflow &amp; Motion Design</h3>
-  <p class="lead" style="margin-bottom:20px">How the work gets made: a team of AI bots with Creative Bot as the hub, plus the motion graphics Kyle uses on his live streams.</p>
-  <div class="workflow" id="work-grid"></div>
-  <h3 class="sub">Storyboards</h3>
-  <p class="lead" style="margin-bottom:20px">Every video starts as a board. Here is the planning behind the videos and the Tamiya delivery-truck commercial parody.</p>
-  <div class="boards" id="boards"></div>
- </div>
-</section>
-
-<section id="akari">
- <div class="wrap">
-  <div class="sec-head reveal">
-   <h2><small class="jp">明里</small>Akari</h2>
-   <p class="lead">Kyle's original character. Her daily journal starts with Entry 1.</p>
-  </div>
-  <div class="akari">
-   <div class="akari-lead reveal"><img src="assets/akari/akari-avatar.jpg" alt="Akari portrait: long black hair, cherry blossoms, one glowing blue cybernetic eye, headphones" loading="lazy" width="656" height="656"></div>
-   <div class="reveal">
-    <p>Akari (明里) is 25 and Japanese-American, with one natural brown eye and one cybernetic blue eye. Long black hair, a cherry blossom motif, and headphones, in a tactical, street, and fusion style with US and Japan flag patches.</p>
-    <div class="facts">
-     <div class="skill"><b>Age</b><span>25</span></div>
-     <div class="skill"><b>Heritage</b><span>Japanese-American</span></div>
-     <div class="skill"><b>Eyes</b><span>One brown, one cybernetic blue</span></div>
-     <div class="skill"><b>Motif</b><span>Cherry blossoms 🌸</span></div>
+    <div class="hero-layout">
+      <ul class="callouts left">
+        <li class="callout">
+          <span class="callout-dot"></span>
+          <span class="callout-text"><span class="en">Original Character</span><span class="ja" lang="ja">オリジナルキャラクター</span></span>
+        </li>
+        <li class="callout">
+          <span class="callout-dot"></span>
+          <span class="callout-text"><span class="en">Heterochromia</span><span class="ja" lang="ja">オッドアイ</span></span>
+        </li>
+      </ul>
+      <div class="portrait" data-face-cx="0.50" data-face-cy="0.40" data-face-rx="0.46" data-face-ry="0.34">
+        <p class="sr">Portrait of Akari. Brown eye on the left of the image, electric cyan eye on the right, freckles visible.</p>
+        <video id="hero-video" muted loop playsinline poster="assets/hero/akari_hero.jpg" aria-hidden="true">
+          <source src="assets/hero/akari_hero.mp4" type="video/mp4">
+        </video>
+        <div class="holo-lines" aria-hidden="true"></div>
+        <div class="holo-scan" aria-hidden="true"></div>
+      </div>
+      <ul class="callouts right">
+        <li class="callout">
+          <span class="callout-dot"></span>
+          <span class="callout-text"><span class="en">Singer</span><span class="ja" lang="ja">シンガー</span></span>
+        </li>
+        <li class="callout">
+          <span class="callout-dot"></span>
+          <span class="callout-text"><span class="en">Paper Crane Studio</span><span class="ja" lang="ja">紙鶴スタジオ</span></span>
+        </li>
+      </ul>
+      <svg class="leaders" aria-hidden="true"></svg>
     </div>
-    <h3 class="sub" style="margin:0 0 6px;font-size:28px">Her looks</h3>
-    <p style="margin:0 0 10px;font-size:15px">Her wardrobe keeps changing, so this gallery will keep growing. A few looks so far:</p>
-    <div class="styles"><i>Gothic Cyberpunk</i><i>Tokyo Streetwear</i><i>Modern Cyberpunk Soldier</i><i>Japanese-American Fusion</i></div>
-    <div class="akari-sheets" id="akari-sheets"></div>
-    <p style="font-size:13px;color:#9aa0b4;margin:18px 0 0">Akari 明里 is an original character created by Kyle Ramirez. © 2026 Kyle Ramirez. All rights reserved.</p>
-    <div class="cta"><a class="btn primary" href="#coming-soon">▶ Watch the teaser</a></div>
-   </div>
-  </div>
-  <div class="akari-journal reveal" id="akari-stories">
-   <h3 class="sub">Daily stories</h3>
-   <p>Akari tells one numbered story at a time, with the original image beside it. The journal starts at Entry 1.</p>
-   <!-- akari-stories:start -->
-<div class="akari-latest">
- <a href="akari/stories/1/"><img src="akari/stories/images/entry_01_first_sunrise.jpg" alt="Akari looking at a sunrise; one brown eye and one electric-blue cybernetic eye" width="1152" height="864"></a>
- <div>
-  <h4>Entry 1</h4>
-  <p>Hi. My name is Akari, and I don't remember how I began.</p>
-  <div class="cta"><a class="btn" href="akari/stories/">All entries</a><a class="btn" href="akari/stories/1/">Read Entry 1</a></div>
- </div>
-</div>
-<!-- akari-stories:end -->
-  </div>
-  <div class="akari-video reveal">
-   <h3 class="sub" style="margin:44px 0 12px;font-size:28px">Akari video</h3>
-   <video controls preload="metadata" playsinline poster="assets/poster/akari-dance.jpg" src="assets/video/akari-dance.mp4" aria-label="Akari dancing in a laser-lit bedroom rave"></video>
-   <p style="font-size:14px;color:#9aa0b4;margin:10px 0 0">Akari dancing in a laser-lit bedroom rave. More Akari videos coming.</p>
-  </div>
- </div>
-</section>
+  </section>
 
-<section id="about" class="alt">
- <div class="wrap about">
-  <img src="assets/img/creative-mode.webp" alt="Kyle's chibi character in full creative mode" loading="lazy" class="reveal">
-  <div class="reveal">
-   <h2><small class="jp">プロフィール</small>About Kyle</h2>
-   <p>I'm Kyle, a 38-year-old creator from the Bay Area who fell hard for what AI can do. I'm not a trained musician or illustrator. I'm a storyteller who learned to direct AI tools until the picture or the song in my head showed up on the screen.</p>
-   <p>I grew up on scary movies like <i>Alien</i>, <i>Resident Evil</i>, <i>Friday the 13th</i>, and <i>The Ring</i>, so a lot of my art turns them into something fun, usually with my tuxedo cat Munchkin in costume. I write songs in English and Japanese, build full videos from storyboards, and I use my work to give back, like my charity single for children with disabilities.</p>
-   <p>This site is the permanent home for all of it, because great work shouldn't get lost in a feed.</p>
-   <div class="skills">
-    <div class="skill"><b>Image generation &amp; editing</b><span>Consistent characters, posters, comics</span></div>
-    <div class="skill"><b>AI music</b><span>Suno songwriting, bilingual lyrics, 100 tracks</span></div>
-    <div class="skill"><b>AI video</b><span>Storyboards, scene generation, lyric sync</span></div>
-    <div class="skill"><b>Prompt craft</b><span>Directing multi-step creative pipelines</span></div>
-   </div>
+  <section class="featured" id="featured" aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="featured-title">Featured Work</h2>
+        <p>Four pieces. Akari, and the metal videos. Everything else is in the menu.</p>
+      </div>
+      <div class="feature-grid">
+        <a class="feature-card" href="music-videos.html#akari-teaser">
+          <img class="face" src="assets/hero/akari_hero.jpg" alt="Akari looking up, brown eye on the left of the image and an electric cyan eye on the right, freckles visible" width="960" height="1200">
+          <span class="meta"><span class="kicker">Akari</span><span class="name">Teaser</span><span class="sub" lang="ja">明里</span></span>
+        </a>
+        <a class="feature-card" href="music-videos.html#akari-dance">
+          <img src="assets/poster/akari-dance.jpg" alt="Akari smiling in a pink-lit room, freckles visible, headphones at her neck" width="1280" height="720" loading="lazy">
+          <span class="meta"><span class="kicker">Akari</span><span class="name">Dance</span><span class="sub" lang="ja">明里</span></span>
+        </a>
+        <a class="feature-card" href="music-videos.html#weight-she-carries">
+          <img src="assets/mv/weight-she-carries.jpg" alt="Still from The Weight She Carries: a young woman at a laptop at night" width="1280" height="720" loading="lazy">
+          <span class="meta"><span class="kicker">Metal</span><span class="name">The Weight She Carries</span><span class="sub" lang="ja">彼女が背負うもの</span></span>
+        </a>
+        <a class="feature-card" href="music-videos.html#different-light">
+          <img src="assets/mv/different-light.jpg" alt="Still from A Different Kind of Light: three people watching a city sunset, one seated in a wheelchair" width="1280" height="720" loading="lazy">
+          <span class="meta"><span class="kicker">Metal</span><span class="name">A Different Kind of Light</span><span class="sub" lang="ja">違う光</span></span>
+        </a>
+      </div>
+      <a class="more-link" href="music-videos.html">All videos</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="connect">
+  <div class="wrap">
+    <h2>Connect</h2>
+    <ul class="connect">
+      <li><a href="https://www.youtube.com/@hellabayarea" target="_blank" rel="noopener noreferrer"><b>YouTube</b><span>@hellabayarea</span></a></li>
+      <li><a href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer"><b>Spotify</b><span>Artist page</span></a></li>
+      <li><a href="https://suno.com/@detnorske" target="_blank" rel="noopener noreferrer"><b>Suno</b><span>@detnorske</span></a></li>
+      <li><a href="https://x.com/HellaBayArea" target="_blank" rel="noopener noreferrer"><b>X</b><span>@HellaBayArea</span></a></li>
+      <li><a href="https://www.tiktok.com/@hellabayarea88" target="_blank" rel="noopener noreferrer"><b>TikTok</b><span>@hellabayarea88</span></a></li>
+      <li><a href="https://www.amazon.com/hz/wishlist/ls/H9T2JK96ONGY" target="_blank" rel="noopener noreferrer"><b>Wishlist</b><span>Amazon</span></a></li>
+    </ul>
+    <p class="legal">Kyle Ramirez · Paper Crane Studio</p>
   </div>
- </div>
-</section>
-
-<section id="contact" class="contact">
- <div class="wrap">
-  <h2 class="reveal"><small class="jp">つながろう</small>Let's Connect</h2>
-  <p class="lead reveal" style="margin:14px auto 0">New art drops on X and TikTok, videos on YouTube, and new songs land on Suno. For collaborations or AI creative roles, reach out on X.</p>
-  <div class="socials">
-   <a class="social reveal" href="https://x.com/HellaBayArea" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    <b>X</b><span>@HellaBayArea</span></a>
-   <a class="social reveal" href="https://www.tiktok.com/@hellabayarea88" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9a4.8 4.8 0 0 1-1-.2z"/></svg>
-    <b>TikTok</b><span>@hellabayarea88</span></a>
-   <a class="social reveal" href="https://www.youtube.com/@HellaBayArea" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
-    <b>YouTube</b><span>@HellaBayArea</span></a>
-   <a class="social reveal" href="https://suno.com/@detnorske" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-    <b>Suno</b><span>@detnorske</span></a>
-   <a class="social reveal" href="https://open.spotify.com/artist/5veTJMjUyzIwWuyG2h6DSA" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-    <b>Spotify</b><span>Artist page</span></a>
-   <a class="social reveal" href="https://www.amazon.com/hz/wishlist/ls/H9T2JK96ONGY" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
-    <b>Wish List</b><span>Amazon</span></a>
-  </div>
- </div>
-</section>
-
-<footer>© 2026 Kyle Ramirez. All artwork, lyrics, and videos created by Kyle Ramirez with AI tools. Movie titles are referenced as fan tributes.</footer>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true">
- <button class="x" aria-label="Close">✕</button><button class="prev" aria-label="Previous">‹</button><button class="next" aria-label="Next">›</button>
- <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
-</div>
-
-<script>
-const ART=[
- ["haunted-house","Happy Halloween: Haunted House","horror","Halloween greeting poster"],
- ["the-shining","The Shining: Heeere's Munchkin!","horror","Overlook Hotel tribute"],
- ["korea-1","Breakfast Around the World: South Korea","comics","Day 8 · page 1"],
- ["scuba","Deep Dive with Munchkin","munchkin","Good-night adventure series"],
- ["daily-1026","What Day Is Today? Mini 4WD Day","daily","Daily calendar post · Oct 26"],
- ["alien","In Space No One Can Hear You Meow","horror","Alien (1979) tribute poster"],
- ["the-ring","The Ring: Seven Days, Nine Lives","horror","J-horror tribute"],
- ["starship","Starship Munchkin","munchkin","Launch-day trend art"],
- ["resident-evil","Resident Evil: Nine Lives of the Dead","horror","Survival-horror fan poster"],
- ["dracula","Dracula: Fangs for the Night-Meows","horror","Gothic classic"],
- ["creative-mode","Full Creative Mode","characters","Signature chibi character"],
- ["friday13","Friday the 13th: Nine Lives","horror","Camp Crystal Lake, cat edition"],
- ["jaws","Jaws: We're Gonna Need a Bigger Track","horror","Jaws x Mini 4WD crossover"],
- ["pit-crew","Munchkin Pit Crew: Tune-Up","comics","4-panel comic"],
- ["bay-area-boy","Bay Area Boy","covers","Single cover art"],
- ["pet-sematary","Pet Sematary: Sometimes Dead Is Purr-ter","horror","Stephen King tribute"],
- ["caturday","Caturday","munchkin","Munchkin and friends"],
- ["childs-play","Child's Play: Meow's Your Friend","horror","Killer-doll classic"],
- ["different-light-art","A Different Kind of Light","covers","Charity single key art"],
- ["japan-cup","Good Morning! Japan Cup Breakfast","comics","Manga-style daily comic"],
- ["halloween-mini4wd","Halloween x Mini 4WD","horror","Slasher-night race"],
- ["mind-blown","Mind = Blown","characters","Working with AI collaborators"],
- ["cuddle","Best Friends","munchkin","Kyle and Munchkin"],
- ["bay-area-boy-club","Bay Area Boy (club cover)","covers","Alternate cover"],
- ["pit-crew-2","Munchkin Pit Crew: Day 2","comics","Mini 4WD comic strip"],
- ["neon-studio","Neon Studio","characters","Chibi studio series"],
- ["autumn","Autumn Portrait","munchkin","Anime-style portrait"],
- ["footprints-cover","足跡が途切れる場所でも","covers","Memorial song cover"],
- ["england","Breakfast Around the World: England","comics","Manga-style daily comic"],
- ["artist-day","Happy International Artist Day","daily","Daily calendar post · Oct 25"],
- ["korea-2","Breakfast Around the World: South Korea (p.2)","comics","Day 8 · page 2"],
- ["japan-cup-poster","Japan Cup Breakfast: Start Your Engines","munchkin","Movie-poster style"],
- ["turkey","Breakfast Around the World: Turkey","comics","Day 5 · manga-style comic"],
- ["daily-1023","What Day Is Today? Horror Movie Day","daily","Daily calendar post · Oct 23"],
- ["france-1","Breakfast Around the World: France (p.1)","comics","Day 6 · page 1"],
- ["france-2","Breakfast Around the World: France (p.2)","comics","Day 6 · page 2"],
- ["chibi-sticker","Chibi Kyle Sticker","characters","Character sticker design"],
- ["india-1","Breakfast Around the World: India (p.1)","comics","Day 7 · page 1"],
- ["india-2","Breakfast Around the World: India (p.2)","comics","Day 7 · page 2"],
- ["pumpkin-guide","Carve the Tamiya Pumpkin","horror","Illustrated carving guide"],
- ["england-2","Breakfast Around the World: England (p.2)","comics","Day 4 · page 2"],
- ["daily-1024","What Day Is Today? Oct 24","daily","Daily calendar post · Oct 24"],
- ["mexico","Breakfast Around the World: Mexico","comics","Day 3 · manga-style comic"],
- ["japan-cup-2","Japan Cup Breakfast Grand Prix (p.2)","comics","Manga-style daily comic"],
- ["pit-crew-2b","Munchkin Pit Crew: Day 2 (p.2)","comics","Mini 4WD comic strip"],
- ["daily-1021","What Day Is Today? Back to the Future Day","daily","Daily calendar post · Oct 21"]
-];
-const CATS=[["all","All"],["horror","Horror Tributes"],["munchkin","Munchkin"],["comics","Comics"],["daily","Daily Series"],["covers","Cover Art"],["characters","Characters"]];
-const SONGS=[
- ["weight-she-carries","THE WEIGHT SHE CARRIES","彼女が背負うもの","Japanese female-vocal metalcore about the invisible pain women carry every month. Has a video.","4327924f-189f-4be5-8a09-c95d8c919df1",["Metalcore","日本語","Video"],["jp","metal"]],
- ["footprints","足跡が途切れる場所でも","Even Where the Footprints End","A Japanese post-hardcore ballad in memory of Kyle's late dog Buttons.","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e",["Metalcore","日本語"],["jp","metal","life"]],
- ["beyond-the-stars","Beyond the Stars","星の向こうへ","Atmospheric electronic metalcore about an astronaut calling home.","2c699a9a-bf3e-402a-9207-6ca25650f03d",["Metalcore","日本語","Video"],["jp","metal"]],
- ["silent-scream","Silent Scream","Shadows of Stone","Jagged industrial hardstyle with dual heavy drops.","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a",["Hardstyle","Video"],["album","edm"],"poster/silent-scream"],
- ["forgotten-ones","The Forgotten Ones","忘れられた人々","A Japanese metalcore ballad for the elderly people the world walks past.","95e26a2e-838e-4a6c-9d33-e89000c6788a",["Metalcore","日本語","Video"],["jp","metal"]],
- ["mayhem","Mayhem on the Peninsula","Battlefield metalcore","Relentless double-kick metalcore with radio chatter and explosions.","13887b34-bf14-4fd6-af62-7240b66ee22f",["Metalcore","Video"],["metal","gaming"]],
- ["requiem","Requiem for the Dead","Resident Evil fan song","Industrial metal with a horror orchestra, written for Resident Evil Requiem.","5e11cdf3-b6b1-4333-ade4-5c02e3f94af0",["Industrial metal","Horror"],["metal","gaming","horror"]],
- ["boogie-man","Boogie Man","Horror","A children's horror waltz: detuned music box and pounding piano.","60feab2c-52fb-42de-82fb-d6f4c7cb5c86",["Horror","Orchestral"],["horror"]],
- ["letter-front","前線からの手紙","Letter from the Front","A soldier's letter home to his little brother, in Japanese deathcore.","661ee057-bc6a-4aad-9ab1-f4f0594985c3",["Deathcore","日本語","Video"],["jp","metal"]],
- ["eternal-voice","Eternal Voice","Shadows of Stone","Dark hardstyle with ethereal, otherworldly vocals.","86d863dd-3956-4223-8911-f3a0c83987e2",["Hardstyle","Lyric video"],["album","edm"],"poster/eternal-voice"],
- ["son-to-father","Son To Father Legacy","For my dad","Bay Area thrash for Kyle's dad, written in the style of Testament.","6c2168b1-70ff-4117-ae10-acd0bf44f1f5",["Thrash metal"],["metal","life"]],
- ["rip-and-stream","Rip and Stream","DOOM stream anthem","Fast thrash metal written for a DOOM livestream.","80be5c66-0a46-4d35-acf9-3e98ed898fb0",["Thrash metal","Gaming"],["metal","gaming"]],
- ["f-the-rescue","F**k The Rescue","Delivery-driver anthem","Brutal hardcore about Amazon delivery: 190 stops, 400 packages, and one more rescue.","8f6375dd-7e43-49e6-bbf1-c253d28631d0",["Hardcore","Explicit"],["metal","life"]],
- ["darkness-inside","Darkness Inside (Intro)","Shadows of Stone, track 1","Opens a 15-track cinematic techno-hardstyle concept album.","17fe4f71-5ced-4385-971d-3211e7e2ac02",["Hardstyle","Concept album"],["album","edm"]],
- ["good-night-children","Good Night, Children of the World","Nursery x metal","A sweet lullaby that turns into extreme metal screams.","25355328-7250-4a0e-8b81-815b5e132a30",["Experimental","Metal"],["metal","horror"]],
- ["zero-viewers","ZERO VIEWERS","視聴者ゼロ","Bilingual hardstyle about streaming into the void.","2305492e-e317-41d5-922d-dc66a6d4f63f",["Hardstyle","日本語 / EN"],["jp","edm","gaming"]],
- ["mini4wd-friends","Mini 4WD Friends","ミニ四駆","Bilingual racing-game electropop for Mini 4WD fans.","6ff49468-9a69-4c68-8d70-5bc31121e2e2",["Electropop","日本語 / EN"],["jp","edm","gaming"]],
- ["tigers-roar","Tigers Roar Through the Night","阪神タイガース","A Japanese rock and synthwave chant for the Hanshin Tigers.","e143b275-d84c-4980-a7d6-d66320e06445",["Rock","日本語"],["jp","edm"]],
- ["universe-war","Universe War","Human vs Alien","Gothic industrial rock: a hypnotic war anthem for humanity.","3a126b69-e5d0-4e52-9ed2-a7878a25dd49",["Industrial rock"],["metal"]],
- ["open-beta","Open Beta Slaughter","Call of Duty beta","Thrash and metalcore about streaming the CoD open beta.","fefe96b0-cabd-4b11-b851-7f67e0e5d9c6",["Thrash","Metalcore"],["metal","gaming"]],
- ["bedtime-apocalypse","Bedtime Apocalypse","Parenting metalcore","Comedy metalcore about bedtime with a toddler: raise the sippy cup!","fec0fd4c-014f-44bc-94be-9198082aebf1",["Metalcore","Comedy"],["metal","life"]],
- ["unicorn-charge","Hiro's Unicorn Charge","For my son","Synthwave monster-truck racing anthem made for Kyle's son.","7f691770-f071-4c45-b7a0-cf39df4aa9c2",["Synthwave"],["edm","life"]],
- ["pine-open-sky","Pine And Open Sky","Camping song","High-energy country-techno about camping trips.","cf2fa1ef-ff75-43e4-9fdb-02db3b68428f",["Country","Techno"],["edm","life"]],
- ["black-lilies","Black Lilies Blooming","Thank you, X","Indie-pop thank-you to everyone who supports Kyle on X.","def7f421-c189-458a-911d-b7cb9c54b226",["Indie pop"],["life"]],
- ["cat-sniff","Cat SniFF","I LOVE CATS","Silly surf-punk shout-along for cat people.","fe7d84f2-0fa4-4dc7-b806-b7715a7db1a6",["Surf punk","Comedy"],["life"]],
- ["beyond-the-stone","Beyond the Stone","Shadows of Stone","Hopeful techno-hardstyle: light leaking through the cracks.","4a160b08-2b22-4ac9-889d-7378673c6da0",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["rough-with-the-wolves","Rough With the Wolves","Shadows of Stone","Heavy hardstyle about turning to run beside your fears.","0edd12da-235a-4fab-a3f9-7abdc8594807",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["pandemonium","Pandemonium","Shadows of Stone","Raw hardstyle with extreme distorted kicks: everything breaks loose.","4c3aebea-c06e-4f44-9221-74f39744fb47",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["state-of-stone","State of Stone","Shadows of Stone","Calm, grounded techno-hardstyle about learning to carry the weight.","412b7ea7-e03c-4936-bd0b-1459174c7503",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["beat-the-shadow","Beat the Shadow","Shadows of Stone","Hardstyle fight song: face the shadow down, even if it breaks your hands.","aa2e2a4c-bf4f-4a9f-a61e-4ac7b5a0583e",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["deepest-wave","Deepest Wave","Shadows of Stone","Melodic techno-hardstyle: the wave that breaks the stone open.","d46dc7f1-d9a4-4f88-bb79-f5b4f42c0bc3",["Hardstyle"],["album","edm"],"covers/shadows-of-stone"],
- ["the-stone-stays","The Stone Stays (Outro)","Shadows of Stone, outro","The album closer: “I carry what remains, and I keep moving.”","8eacf5dd-8c54-4479-97e3-bb9f29fa3011",["Hardstyle","Outro"],["album","edm"],"covers/shadows-of-stone"]
-];
-const SCATS=[["all","All"],["album","Shadows of Stone"],["jp","日本語 Japanese"],["metal","Metal"],["edm","Hardstyle & Electronic"],["gaming","Gaming"],["life","Life & Family"],["horror","Horror"]];
-const SHOW=12;
-const VIDS=[
- ["weight-she-carries","THE WEIGHT SHE CARRIES 彼女が背負うもの","Japanese metalcore video","4327924f-189f-4be5-8a09-c95d8c919df1","2114880163540602990"],
- ["world-we-left-behind","The World We Left Behind 僕たちが残した世界","Environmental anime video",null,"2114295594676318247"],
- ["different-light","A Different Kind of Light 違う光","Charity single video","025d9200-f3dc-4bb0-976a-91af5b84df49"],
- ["price-tribute","Captain John Price Tribute","Call of Duty fan tribute with an original score (full 35 s)",null,"2112480433602802019"],
- ["beyond-the-stars","Beyond the Stars","Anime sci-fi video","2c699a9a-bf3e-402a-9207-6ca25650f03d"],
- ["eternal-voice","Eternal Voice","Shadows of Stone lyric video","86d863dd-3956-4223-8911-f3a0c83987e2","2111762165409718341"],
- ["tamiya-ad","Tamiya Delivery 「押しても負けない」","Japanese TV-commercial comedy parody (full 30 s)",null],
- ["bay-area-boy","Bay Area Boy","Club anthem video",null],
- ["forgotten-ones","The Forgotten Ones 忘れられた人々","Anime drama video","95e26a2e-838e-4a6c-9d33-e89000c6788a"],
- ["letter-front","前線からの手紙","War-story video","661ee057-bc6a-4aad-9ab1-f4f0594985c3"],
- ["footprints","足跡が途切れる場所でも","Memorial video for Buttons","47bd3b5f-7fa6-4c32-b035-b2d88f10e56e"],
- ["silent-scream","Silent Scream","Lyric video","7843e4dc-d790-4cbc-8cb7-adc7c4ce708a"],
- ["mayhem","Mayhem on the Peninsula","Cinematic war video","13887b34-bf14-4fd6-af62-7240b66ee22f"]
-];
-const WORK=[
- ["bots-lineup","Meet the Team: My AI Bots","10 AI bots that help make the videos, art, and daily posts",null,"2113209664775356663"],
- ["creative-bot","Creative Bot: The Hub","Animated map of how the bots connect",null],
- ["stream-graphics","Stream Overlay Pack","Welcome, Live Now, Be Right Back, and Thank You screens for @HellaBayArea streams",null]
-];
-const BOARDS=[
- ["tamiya-board","Tamiya Delivery: full commercial storyboard","Storyboard",1],
- ["ta1","Rain or wind… (frame 1)","Tamiya ad storyboard"],["ta2","The push (frame 2)","Tamiya ad storyboard"],["ta3","The argument (frame 3)","Tamiya ad storyboard"],
- ["ta4","Tamiya power (frame 4)","Tamiya ad storyboard"],["ta5","The rescue (frame 5)","Tamiya ad storyboard"],["ta6","End card (frame 6)","Tamiya ad storyboard"],
- ["light-board","A Different Kind of Light: video storyboard","Storyboard",1],
- ["bab-board","Bay Area Boy: video storyboard","Storyboard",1],
- ["weight-board","The Weight She Carries: video storyboard","Storyboard",1],
- ["earth-board","The World We Left Behind: video storyboard","Storyboard",1],
- ["stars-board","Beyond the Stars: video storyboard","Storyboard",1],
- ["elder-board","The Forgotten Ones: video storyboard","Storyboard",1],
- ["letter-board","前線からの手紙 Letter from the Front: storyboard","Storyboard",1]
-];
-const $=s=>document.querySelector(s);
-// gallery
-let current=[];
-let artAll=false,artCat='all';const ART_SHOW=10;
-function renderGallery(cat){
- artCat=cat;
- const g=$('#gallery');g.innerHTML='';
- current=ART.filter(a=>cat==='all'||a[2]===cat).map(a=>({slug:a[0],title:a[1],cap:a[3]}));
- const lim=(cat==='all'&&!artAll)?ART_SHOW:current.length;
- const mb=$('#art-more');mb.parentNode.style.display=lim<current.length?'':'none';mb.textContent=`Show all ${current.length} images ↓`;
- current.slice(0,lim).forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
-  f.innerHTML=`<img src="assets/thumb/${a.slug}.webp" alt="${a.title.replace(/"/g,'&quot;')}" loading="lazy"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
-  f.onclick=()=>openLb(current,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(current,i)};g.appendChild(f);});
-}
-const fl=$('#filters');CATS.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';
- b.onclick=()=>{fl.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderGallery(k)};fl.appendChild(b)});
-renderGallery('all');
-$('#art-more').onclick=()=>{artAll=true;renderGallery(artCat)};
-// songs
-const play='<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
-let songAll=false,songCat='all';
-function renderSongs(){
- const list=SONGS.filter(s=>songCat==='all'||s[6].includes(songCat));
- $('#songs').innerHTML=list.map((s,k)=>`<a class="song${songCat==='all'&&!songAll&&k>=SHOW?' hide':''}" href="https://suno.com/song/${s[4]}" target="_blank" rel="noopener">
- <div class="art"><img src="assets/${s[7]||'covers/'+s[0]}.webp" alt="${s[1]} cover" loading="lazy" decoding="async" width="600" height="600"><span class="play">${play}</span></div>
- <div class="meta"><h4>${s[1]}</h4><p class="jp" style="color:#c9a3a4;margin-bottom:4px">${s[2]}</p><p>${s[3]}</p>
- <div class="tags">${s[5].map(t=>`<i class="${/日本語/.test(t)?'jpt':t==='Explicit'?'x':''}">${t}</i>`).join('')}</div></div></a>`).join('');
- $('#song-count').textContent=`${list.length} ${songCat==='all'?'songs featured here (plus the charity single above)':'songs'}`;
- const b=$('#song-more');b.style.display=(songCat==='all'&&!songAll&&list.length>SHOW)?'':'none';b.textContent=`Show all ${list.length} songs ↓`;
-}
-const sf=$('#song-filters');SCATS.forEach(([k,l],i)=>{const b=document.createElement('button');b.textContent=l;if(!i)b.className='on';
- b.onclick=()=>{sf.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');songCat=k;renderSongs()};sf.appendChild(b)});
-$('#song-more').onclick=()=>{songAll=true;renderSongs()};
-renderSongs();
-// videos
-const vcard=v=>`<div class="vcard reveal"><video controls preload="none" playsinline poster="assets/poster/${v[0]}.webp" src="assets/video/${v[0]}.mp4"></video>
- <div class="meta"><h4>${v[1]}</h4><p>${v[2]}${v[3]?` · <a href="https://suno.com/song/${v[3]}" target="_blank" rel="noopener">song on Suno ↗</a>`:''}${v[4]?` · <a href="https://x.com/HellaBayArea/status/${v[4]}" target="_blank" rel="noopener">post on X ↗</a>`:''}</p></div></div>`;
-$('#videos-grid').innerHTML=VIDS.map(vcard).join('');
-$('#work-grid').innerHTML=WORK.map(vcard).join('');
-// boards
-const bItems=BOARDS.map(b=>({slug:b[0],title:b[1],cap:b[2]}));
-$('#boards').innerHTML='';BOARDS.forEach((b,i)=>{const f=document.createElement('figure');f.className='tile'+(b[3]?' wide':'');f.tabIndex=0;
- f.innerHTML=`<img src="assets/thumb/${b[0]}.webp" alt="${b[1]}" loading="lazy"><figcaption>${b[1]}<span>${b[2]}</span></figcaption>`;
- f.onclick=()=>openLb(bItems,i);$('#boards').appendChild(f)});
-// akari sheets (open in the lightbox)
-const AKARI=[{slug:'akari-character-sheet',title:'Akari 明里: character reference',cap:'Turnaround, expressions, outfits, details',src:'assets/akari/akari-character-sheet.jpg'},
- {slug:'akari-outfits',title:'Akari: outfit styles',cap:'Gothic Cyberpunk · Tokyo Streetwear · Cyberpunk Soldier · Fusion',src:'assets/akari/akari-outfits.jpg'},
- {slug:'akari-angel-demon',title:'Akari: Angel & Demon',cap:'Two winged forms: dark and light',src:'assets/akari/akari-angel-demon.jpg'}];
-AKARI.forEach((a,i)=>{const f=document.createElement('figure');f.className='tile';f.tabIndex=0;
- f.innerHTML=`<img src="assets/akari/${a.slug}-thumb.jpg" alt="${a.title}" loading="lazy" width="800" height="533"><figcaption>${a.title}<span>${a.cap}</span></figcaption>`;
- f.onclick=()=>openLb(AKARI,i);f.onkeydown=e=>{if(e.key==='Enter')openLb(AKARI,i)};$('#akari-sheets').appendChild(f)});
-// lightbox
-let lbSet=[],lbI=0;const lb=$('#lb');
-function show(){const a=lbSet[lbI];$('#lb-img').src=a.src||`assets/img/${a.slug}.webp`;$('#lb-img').alt=a.title;$('#lb-cap').innerHTML=`${a.title}<span>${a.cap} · ${lbI+1} / ${lbSet.length}</span>`}
-function openLb(set,i){lbSet=set;lbI=i;show();lb.classList.add('open');document.body.style.overflow='hidden'}
-function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
-function step(d){lbI=(lbI+d+lbSet.length)%lbSet.length;show()}
-lb.querySelector('.x').onclick=closeLb;lb.querySelector('.prev').onclick=e=>{e.stopPropagation();step(-1)};lb.querySelector('.next').onclick=e=>{e.stopPropagation();step(1)};
-lb.onclick=e=>{if(e.target===lb)closeLb()};
-document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
-let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1)});
-// only one video plays at a time
-document.addEventListener('play',e=>{document.querySelectorAll('video').forEach(v=>{if(v!==e.target)v.pause()})},true);
-// hero collage: a mixed, slowly scrolling wall of art
-const COLS=[
- ["alien","different-light-art","haunted-house","pit-crew","dracula","caturday","bay-area-boy","the-ring","turkey","creative-mode"],
- ["japan-cup","starship","pet-sematary","scuba","footprints-cover","resident-evil","cuddle","daily-1026","mind-blown","halloween-mini4wd"],
- ["childs-play","autumn","the-shining","england","friday13","neon-studio","korea-1","jaws","bay-area-boy-club","pit-crew-2"]];
-const artBySlug=Object.fromEntries(ART.map(a=>[a[0],a]));
-$('#collage-in').innerHTML=COLS.map((c,ci)=>{const items=c.map(slug=>{const a=artBySlug[slug];const t=a?a[1].replace(/"/g,'&quot;'):'';
- return `<a href="#art" data-slug="${slug}" title="${t}"><img src="assets/collage/${slug}.webp" alt="${t}" decoding="async"></a>`}).join('');
- return `<div class="col c${ci+1}">${items}${items.replace(/alt="[^"]*"/g,'alt="" aria-hidden="true"')}</div>`}).join('');
-$('#collage-in').addEventListener('click',e=>{const l=e.target.closest('a');if(!l)return;e.preventDefault();
- const set=ART.map(a=>({slug:a[0],title:a[1],cap:a[3]}));const i=set.findIndex(a=>a.slug===l.dataset.slug);if(i>=0)openLb(set,i)});
-// reveal
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+</footer>
+<script src="js/site.js"></script>
 </body>
 </html>
