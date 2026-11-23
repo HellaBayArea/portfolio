@@ -8,10 +8,11 @@ Static site for GitHub Pages. The homepage is the Akari hero, a short Featured W
 
 The homepage reads two files. Replace them to swap the hero. Do not change the paths in `index.html`.
 
-- `assets/hero/akari_hero.mp4` — looping, muted hero video. The approved cut is 1280×720, about 6 seconds.
+- `assets/hero/akari_hero.webm` — VP9 with transparency, used first.
+- `assets/hero/akari_hero.mp4` — muted H.264 fallback on `#050505`. The approved cutout is 1280×720, about 6 seconds.
 - `assets/hero/akari_hero.jpg` — poster, and the still used when reduced motion pauses the video.
 
-The approved cut centers Akari, with the Golden Gate on the left and Tokyo and Fuji on the right. The frame is 16:9 with `object-fit: cover` and `object-position: center 30%`. Labels sit on the side edges on a wide screen and under the frame on a small screen.
+The page background is `#050505` so the cutout matches. A gradient fades the bottom and the sides into the page. Labels sit on the side edges on a wide screen and under the frame on a small screen.
 
 ---
 

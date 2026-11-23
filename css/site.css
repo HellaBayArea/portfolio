@@ -1,6 +1,6 @@
 /* Paper Crane Studio. Dark, quiet, one accent. */
 :root {
-  --bg: #000;
+  --bg: #050505;
   --text: #f4f4f5;
   --muted: #c8c8d0;
   --cyan: #d7f6ff;
@@ -157,59 +157,25 @@ summary::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 28px;
-  padding: 92px 0 48px;
+  padding: 88px 0 24px;
   overflow: hidden;
+  background: var(--bg);
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 42%, rgba(90, 180, 220, 0.1), transparent 58%);
-  pointer-events: none;
-}
-.hero-copy { position: relative; text-align: center; }
-.hero-copy h1 {
-  margin: 0;
-  font-size: clamp(64px, 11vw, 128px);
-  font-weight: 500;
-}
-.hero-jp {
-  margin: 8px 0 0;
-  color: var(--muted);
-  letter-spacing: 0.22em;
-  font-size: 16px;
-}
-.hero-line { margin: 10px auto 0; max-width: 28rem; color: var(--muted); }
 .hero-layout {
   position: relative;
-  width: min(1180px, calc(100% - 48px));
+  width: min(1180px, calc(100% - 32px));
   margin-inline: auto;
 }
-.portrait { position: relative; aspect-ratio: 16 / 9; background: #050505; width: 100%; overflow: hidden; }
-.portrait video { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-.holo-lines, .holo-scan { position: absolute; inset: 0; pointer-events: none; }
-.holo-lines {
-  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 4px);
-  mix-blend-mode: multiply;
-  opacity: 0.55;
-}
-.holo-scan {
-  inset: auto 0 0 0;
-  height: 28%;
-  background: linear-gradient(to bottom, transparent, rgba(190, 235, 255, 0.16), transparent);
-  animation: scan 8s linear infinite;
-}
-@keyframes scan {
-  from { transform: translateY(-120%); }
-  to { transform: translateY(360%); }
-}
+.portrait { position: relative; aspect-ratio: 16 / 9; background: transparent; width: 100%; }
+.portrait video { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; background: transparent; }
 .portrait::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(215, 246, 255, 0.35), inset 0 0 40px rgba(80, 180, 220, 0.12);
+  background:
+    linear-gradient(to top, var(--bg) 0%, rgba(5, 5, 5, 0) 26%),
+    linear-gradient(to right, var(--bg) 0%, rgba(5, 5, 5, 0) 9%, rgba(5, 5, 5, 0) 91%, var(--bg) 100%);
 }
 .callouts {
   position: absolute;
@@ -370,7 +336,7 @@ dialog#lightbox figcaption { margin-top: 10px; color: var(--muted); }
     align-items: stretch;
     gap: 0;
     padding: 8px 12px 16px;
-    background: #000;
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
     max-height: calc(100vh - var(--nav));
     overflow: auto;
